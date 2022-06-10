@@ -26,7 +26,7 @@ export default class SignUpForm extends Component {
         body: JSON.stringify({ name: this.state.name, email: this.state.email, password: this.state.password })
       })
 
-      if(!fetchResponse.ok) throw new Error('Fetch Failed - Bad Request' + fetchResponse)
+      if(!fetchResponse.ok) throw new Error('Fetch Failed - Bad Request' + fetchResponse.status)
 
       let token = await fetchResponse.json()
 
