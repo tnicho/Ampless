@@ -6,7 +6,8 @@ export default function SetupIndex(props) {
 
   return (
     <div className='SetupIndex'>SetupIndex
-    {props.setups.map(su => <SetupItem setup={su}/>)}
+    {props.setups.map(su => 
+      <SetupItem setup={su}/>)}
     </div>
   )
 }

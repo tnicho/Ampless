@@ -7,10 +7,12 @@ import SetupMenuBar from '../../components/SetupMenuBar/SetupMenuBar'
 export default class SetupPage extends Component {
   state = {
    setups: [{name: 'benny', overdrive: 4, delay: 6}],
-   currentsetup: {}
+   name: 'TEST TEST',
+   overdrive: 0,
+   delay: 0,
   }
 
-  async compoundDidMount(){
+  async componentDidMount(){
     console.log('hey')
     try {
       let fetchSetupResponse = await fetch('/api/setups')
@@ -23,7 +25,17 @@ export default class SetupPage extends Component {
 
   }
 
-  handleCheckout = async () => {
+  handleOverdriveChange = (od) => {
+    console.log('hey')
+    this.setState({currentOverdrive: od})
+  }
+
+  handleChange = (e) => {
+    console.log(e);
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleSetupCreate = async () => {
     try {
       let jwt = localStorage.getItem('token')
       let fetchResponse = await fetch("/api/setups", {
@@ -37,11 +49,16 @@ export default class SetupPage extends Component {
       console.error("Error:", err) // <-- log if error 
     }
   }
+
   render() {
     return (
       <div className='SetupPage'>
         <SetupMenuBar/>
-        <SetupMain />
+        <SetupMain 
+          name={this.state.name} 
+          overdrive = {this.state.overdrive} 
+          handleChange = {this.handleChange}
+          delay = {this.state.delay}/>
         <SetupIndex setups= {this.state.setups}/>
       </div>
     )
