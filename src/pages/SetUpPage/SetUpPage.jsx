@@ -6,14 +6,20 @@ import SetupMenuBar from '../../components/SetupMenuBar/SetupMenuBar'
 
 export default class SetupPage extends Component {
   state = {
-   setups: [{name: 'benny', overdrive: 4, delay: 6}],
+   setups: [],
    name: 'TEST TEST',
    overdrive: 0,
    delay: 0,
   }
 
   async componentDidMount(){
+    this.getSetups()
+
+  }
+
+  getSetups = async () => {
     try {
+      console.log('inside getSetups')
       let fetchSetupResponse = await fetch('/api/setups')
       let setups = await fetchSetupResponse.json();
       this.setState({setups: setups})
@@ -21,9 +27,7 @@ export default class SetupPage extends Component {
     } catch (err) {
       console.error('ERROR:', err)
     }
-
   }
-
   handleTitleChange = (text) => {
     this.setState({name: text })
   }
@@ -52,6 +56,7 @@ export default class SetupPage extends Component {
     } catch (err) {
       console.error("Error:", err) // <-- log if error 
     }
+    this.getSetups()
   }
 
   render() {
