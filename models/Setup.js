@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const setupSchema = new Schema({
     name: String,
-    overDrive: {
+    overdrive: {
       type: Number,
       min: 0,
       max: 10,

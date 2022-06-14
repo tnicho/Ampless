@@ -13,7 +13,6 @@ export default class SetupPage extends Component {
   }
 
   async componentDidMount(){
-    console.log('hey')
     try {
       let fetchSetupResponse = await fetch('/api/setups')
       let setups = await fetchSetupResponse.json();
@@ -25,9 +24,8 @@ export default class SetupPage extends Component {
 
   }
 
-  handleOverdriveChange = (od) => {
-    console.log('hey')
-    this.setState({currentOverdrive: od})
+  handleTitleChange = (text) => {
+    this.setState({name: text })
   }
 
   handleChange = (e) => {
@@ -37,11 +35,17 @@ export default class SetupPage extends Component {
 
   handleSetupCreate = async () => {
     try {
+      let newSetup = {
+          name: this.state.name,
+          overdrive: this.state.overdrive,
+          delay: this.state.delay,
+      }
+      console.log(newSetup)
       let jwt = localStorage.getItem('token')
       let fetchResponse = await fetch("/api/setups", {
         method: "POST",
         headers: {"Content-Type": "application/json",'Authorization': 'Bearer ' + jwt},
-        body: JSON.stringify({setups: this.state.setups}) // <-- send this object to server
+        body: JSON.stringify({newSetup}) // <-- send this object to server
         }) 
       let serverResponse = await fetchResponse.json() // <-- decode fetch response
       console.log("Success:", serverResponse)   // <-- log server response
@@ -53,11 +57,14 @@ export default class SetupPage extends Component {
   render() {
     return (
       <div className='SetupPage'>
-        <SetupMenuBar/>
+        <SetupMenuBar
+          handleSetupCreate = {this.handleSetupCreate}
+        />
         <SetupMain 
           name={this.state.name} 
           overdrive = {this.state.overdrive} 
           handleChange = {this.handleChange}
+          handleTitleChange = {this.handleTitleChange}
           delay = {this.state.delay}/>
         <SetupIndex setups= {this.state.setups}/>
       </div>

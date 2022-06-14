@@ -15,10 +15,13 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
+    let newSetup = req.body.newSetup
+    console.log('inside create' , req.body)
     try{
-        await Setup.create({name: req.body.name, overdrive: req.body.overdrive, delay: req.body.delay})
+        await Setup.create({name: newSetup.name, overdrive: parseInt(newSetup.overdrive), delay: parseInt(newSetup.delay)})
         res.status(200).json('ok')
     }catch(err){
+        console.log('Failed')
         res.json(err);
     }
 
