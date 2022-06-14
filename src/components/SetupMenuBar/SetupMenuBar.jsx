@@ -6,9 +6,10 @@ export default function SetupMenuBar(props) {
   return (
     <div className= 'SetupMenuBar'>
         SetupMenuBar
-        <button>Save</button>
-        <button onClick={props.handleSetupCreate}>Save New</button>
-        <button>Delete</button>
+        <button onClick={props.handleNewSetup}> New Blank Setup</button>
+        <button onClick={props.handleSetupSave}>Save</button>
+        <button onClick={props.handleSetupDelete}>Delete</button>
+       
         <UserLogOut/>
     </div>
   )

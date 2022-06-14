@@ -7,13 +7,15 @@ import SetupMenuBar from '../../components/SetupMenuBar/SetupMenuBar'
 export default class SetupPage extends Component {
   state = {
    setups: [],
-   name: 'TEST TEST',
+   id: '',
+   name: '',
    overdrive: 0,
    delay: 0,
   }
 
   async componentDidMount(){
     this.getSetups()
+    this.handleNewSetup()
 
   }
 
@@ -28,14 +30,6 @@ export default class SetupPage extends Component {
       console.error('ERROR:', err)
     }
   }
-  handleTitleChange = (text) => {
-    this.setState({name: text })
-  }
-
-  handleChange = (e) => {
-    console.log(e);
-    this.setState({ [e.target.name]: e.target.value });
-  };
 
   handleSetupCreate = async () => {
     try {
@@ -59,11 +53,93 @@ export default class SetupPage extends Component {
     this.getSetups()
   }
 
+  handleNewSetup = () => {
+    this.setState({
+      id: '',
+      name: 'Insert A Name',
+      overdrive: 0,
+      delay: 0,
+    })
+  }
+
+  handleSetupUpdate = async () => {
+    try {
+      let newSetup = {
+        id: this.state.id,
+        name: this.state.name,
+        overdrive: this.state.overdrive,
+        delay: this.state.delay,
+      }
+      console.log("newsetup is ",newSetup)
+      let jwt = localStorage.getItem('token')
+      let fetchResponse = await fetch("/api/setups/", {
+        method: "PUT",
+        headers: {"Content-Type": "application/json",'Authorization': 'Bearer ' + jwt},
+        body: JSON.stringify({newSetup}) // <-- send this object to server
+        }) 
+      let serverResponse = await fetchResponse.json() // <-- decode fetch response
+      console.log("Success:", serverResponse)   // <-- log server response
+    } catch (err) {
+      console.error("Error:", err) // <-- log if error 
+    }
+    this.getSetups()
+  }
+
+  handleSetupDelete = async () => {
+    if (this.state.id === ''){
+      this.handleNewSetup()
+    }else{
+      try {
+        let fetchResponse = await fetch("/api/setups/"+ this.state.id, {method: "DELETE"})
+        let serverResponse = await fetchResponse.json() // <-- decode fetch response
+        console.log("Success:", serverResponse)   // <-- log server response
+      } catch (err) {
+        console.error("Error:", err) // <-- log if error 
+      }
+        this.getSetups()
+        this.handleNewSetup()
+    }
+  
+  }
+
+  handleSetupSelect = (setup) => {
+    console.log('in SetupSelect', setup)
+    this.setState({
+      name: setup.name,
+      id: setup._id,
+      overdrive: setup.overdrive,
+      delay: setup.delay
+    })
+
+  }
+
+  handleTitleChange = (text) => {
+    this.setState({name: text })
+  }
+
+  handleChange = (e) => {
+    console.log(e);
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleSetupSave = () => {
+    if(this.state.id === ""){
+      this.handleSetupCreate()
+    }else{
+      this.handleSetupUpdate()
+    }
+
+  }
+
+
+
   render() {
     return (
       <div className='SetupPage'>
         <SetupMenuBar
-          handleSetupCreate = {this.handleSetupCreate}
+          handleSetupSave = {this.handleSetupSave}
+          handleNewSetup = {this.handleNewSetup}
+          handleSetupDelete = {this.handleSetupDelete}
         />
         <SetupMain 
           name={this.state.name} 
@@ -71,7 +147,7 @@ export default class SetupPage extends Component {
           handleChange = {this.handleChange}
           handleTitleChange = {this.handleTitleChange}
           delay = {this.state.delay}/>
-        <SetupIndex setups= {this.state.setups}/>
+        <SetupIndex setups= {this.state.setups} handleSetupSelect = {this.handleSetupSelect}/>
       </div>
     )
   }

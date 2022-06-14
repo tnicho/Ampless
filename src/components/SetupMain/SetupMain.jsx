@@ -9,7 +9,8 @@ export default function SetupMain(props) {
 
   return (
     <div className='SetupMain'>
-      <EditableLabel className='SetupName' labelFontSize = '50px' inputFontSize = '50px' inputWidth = '30vw' inputHeight = '50px' text={props.name} onFocusOut={props.handleTitleChange}/><br/>
+      {/* <EditableLabel className='SetupName' labelFontSize = '50px' inputFontSize = '50px' inputWidth = '30vw' inputHeight = '50px' text={props.name} onFocusOut={props.handleTitleChange}/><br/> */}
+      <label className='NameLabel'>{props.name}</label><br/>
       <SliderBox className = 'OverdriveSlider' title = {'Overdrive'} name= {'overdrive'} setupNum={props.overdrive} handleChange = {props.handleChange}/>
       <SliderBox className = 'DelaySlider' title= {'delay'} name = {'delay'} setupNum={props.delay} handleChange = {props.handleChange}/>
       <SliderBox className = 'Tremelo' title= {'Tremelo'} />
