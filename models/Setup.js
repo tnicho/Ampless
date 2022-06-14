@@ -3,8 +3,16 @@ const Schema = mongoose.Schema;
 
 const setupSchema = new Schema({
     name: String,
-    overDrive: Number,
-    delay: Number,
+    overDrive: {
+      type: Number,
+      min: 0,
+      max: 10,
+    },
+    delay: {
+      type: Number,
+      min: 0,
+      max: 10,
+    },
 
   },{
     timestamps: true,

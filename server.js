@@ -15,7 +15,9 @@ app.use(express.json());
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.use('/api/users', require('./routes/api/users'))
+app.use('/api/users', require('./routes/api/users'));
+
+app.use('/api/setups', require ('./routes/api/setups'));
 
 const port = process.env.PORT || 3001;
 

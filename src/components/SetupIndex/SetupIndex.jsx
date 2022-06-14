@@ -1,15 +1,12 @@
 import React from 'react'
 import './SetupIndex.css'
-//import SetupItem from '../SetupItem/SetupItem'
+import SetupItem from '../SetupItem/SetupItem'
 
-export default function SetupIndex() {
-//  const setupItems = setups.map(su => 
-//     <SetupItem/>
-//     )
+export default function SetupIndex(props) {
 
   return (
     <div className='SetupIndex'>SetupIndex
-        {/* {setupItems.length ? setupItems: <span>NO SETUPS</span>} */}
+    {props.setups.map(su => <SetupItem setup={su}/>)}
     </div>
   )
 }
