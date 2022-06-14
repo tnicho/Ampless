@@ -19,20 +19,16 @@ export default class SignUpForm extends Component {
   handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      alert("hello! i'm an alert!");
       const fetchResponse = await fetch('/api/users/signup', {
         method: 'POST',
         headers:{ 'Content-Type': 'application/json'},
         body: JSON.stringify({ name: this.state.name, email: this.state.email, password: this.state.password })
       })
-
       if(!fetchResponse.ok) throw new Error('Fetch Failed - Bad Request' + fetchResponse.status)
-
       let token = await fetchResponse.json()
-
       localStorage.setItem('token', token)
-
       const userDoc = JSON.parse(atob(token.split('.')[1])).user
+      this.props.setUserInState(userDoc)
     } catch (err) {
       console.log("SignupForm error", err);
       this.setState({ error: "Sign Up Failed - Try Again" });

@@ -1,6 +1,7 @@
 const User = require('../../models/User')
 const jwt = require ('jsonwebtoken')
 const bcrypt = require('bcrypt')
+SALT_ROUNDS=6
 
 module.exports = {
     signup,
@@ -18,7 +19,7 @@ async function signup(req, res){
         const token = jwt.sign({ user }, process.env.SECRET,{ expiresIn: '24h' });
         res.status(200).json(token);
       } catch (err) {
-        res.status(400).json(err);
+        res.status(400).json("try catch error in the controller");
       }
 }
 

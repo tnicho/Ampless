@@ -1,6 +1,5 @@
 import { Component } from "react";
-import "./Logo.css";
-import Form from 'react-bootstrap/Form';
+import "./LoginForm.css";
 
 export default class SignUpForm extends Component {
   state = {
@@ -19,24 +18,22 @@ export default class SignUpForm extends Component {
   handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      alert("hello! i'm an alert!");
-      const fetchResponse = await fetch('/api/users/signup', {
+      const fetchResponse = await fetch('/api/users/login', {
         method: 'POST',
         headers:{ 'Content-Type': 'application/json'},
         body: JSON.stringify({email: this.state.password, password: this.state.password })
       })
-
       if(!fetchResponse.ok) throw new Error('Fetch Failed - Bad Request' + fetchResponse)
-
       let token = await fetchResponse.json()
-
       localStorage.setItem('token', token)
-
       const userDoc = JSON.parse(atob(token.split('.')[1])).user
+      this.props.setUserInState(userDoc)
     } catch (err) {
-      console.log("SignupForm error", err);
-      this.setState({ error: "Sign Up Failed - Try Again" });
+      console.log("LoginForm error", err);
+      this.setState({ error: "Log in Failed - Try Again" });
     }
+
+    
   };
 
   render() {

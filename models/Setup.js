@@ -2,9 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const setupSchema = new Schema({
-//     content: { type: String, required: true }
-//   },{
-//     timestamps: true,
+    name: String,
+    overDrive: Number,
+    delay: Number,
+
+  },{
+    timestamps: true,
   }
 );
 

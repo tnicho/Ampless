@@ -1,12 +1,14 @@
 import './App.css';
 import React, { Component } from 'react';
+import Header from './components/Header/Header'
 import AuthPage from "./pages/AuthPage/AuthPage";
-import SetUpPage from './pages/SetUpPage/SetUpPage';
+import SetupPage from './pages/SetupPage/SetupPage';
 
 export default class App extends Component {
   state ={
     user: null
   }
+  
 setUserInState = (incomingUserData) => {
   this.setState({user: incomingUserData})
 }
@@ -27,8 +29,9 @@ componentDidMount(){
   render(){
     return (
       <div className="App">
+        <Header />
         {this.state.user ?
-          <SetUpPage/>
+          <SetupPage/>
           :
           <AuthPage setUserInState={this.setUserInState} />
         }
