@@ -6,11 +6,12 @@ import SetupMenuBar from '../../components/SetupMenuBar/SetupMenuBar'
 
 export default class SetupPage extends Component {
   state = {
-   setups: [],
-   id: '',
-   name: '',
-   overdrive: 0,
-   delay: 0,
+    audioOn: false,
+    setups: [],
+    id: '',
+    name: '',
+    overdrive: 0,
+    delay: 0,
   }
 
   async componentDidMount(){
@@ -28,6 +29,14 @@ export default class SetupPage extends Component {
       console.log("Hey" ,this.state.setups)
     } catch (err) {
       console.error('ERROR:', err)
+    }
+  }
+
+  handleAudioOn = () => {
+    if (this.state.audioOn === false){
+      this.setState({audioOn: true})
+    }else{
+      this.setState({audioOn: false})
     }
   }
 
@@ -143,8 +152,14 @@ export default class SetupPage extends Component {
           name={this.state.name} 
           overdrive = {this.state.overdrive} 
           handleChange = {this.handleChange}
-          delay = {this.state.delay}/>
-        <SetupIndex setups= {this.state.setups} handleSetupSelect = {this.handleSetupSelect}/>
+          delay = {this.state.delay}
+          audioOn = {this.state.audioOn}
+          handleAudioOn = {this.handleAudioOn}
+        />
+        <SetupIndex 
+          setups= {this.state.setups} 
+          handleSetupSelect = {this.handleSetupSelect}
+          />
       </div>
     )
   }
