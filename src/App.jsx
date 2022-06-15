@@ -33,7 +33,7 @@ componentDidMount(){
         <CssBaseline/>
         <Header />
         {this.state.user ?
-          <SetupPage/>
+          <SetupPage setUserInState={this.setUserInState}/>
           :
           <AuthPage setUserInState={this.setUserInState} />
         }

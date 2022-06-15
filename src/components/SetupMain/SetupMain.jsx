@@ -4,6 +4,7 @@ import {Box, Button, TextField} from '@mui/material'
 import { MusicNote, MusicOff } from '@mui/icons-material'
 // import ContentEditable from 'react-contenteditable'
 import SliderBox from '../SliderBox/SliderBox'
+import * as audioInput from '../../utils/audio-input'
 import './SetupMain.css'
 
 export default function SetupMain(props) {
@@ -56,7 +57,7 @@ export default function SetupMain(props) {
           alignItems: 'center'
         }}
       >
-        <Button  variant="contained" startIcon={<MusicNote />} endIcon={<MusicNote/>}>Start</Button>
+        <Button  variant="contained" startIcon={<MusicNote />} endIcon={<MusicNote/>} onClick={() => audioInput.audioStart()}>Start</Button>
         {/* <Button variant="contained" startIcon={<MusicOff />} endIcon={<MusicOff/>}>Stop</Button> */}
       </Box>
     </Box>

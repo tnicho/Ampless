@@ -25,7 +25,9 @@ async function signup(req, res){
 
 async function login (req, res){
     try {
+        console.log("req: ", req.body)
         const user = await User.findOne({ email: req.body.email });
+        console.log("User: ", user)
         if (await bcrypt.compare(user.password, req.body.password)) throw new Error();
         const token = jwt.sign({ user }, process.env.SECRET,{ expiresIn: '24h' });
         res.status(200).json(token)

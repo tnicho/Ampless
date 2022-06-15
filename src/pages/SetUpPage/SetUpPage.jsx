@@ -137,6 +137,7 @@ export default class SetupPage extends Component {
           handleSetupSave = {this.handleSetupSave}
           handleNewSetup = {this.handleNewSetup}
           handleSetupDelete = {this.handleSetupDelete}
+          setUserInState = {this.props.setUserInState}
         />
         <SetupMain 
           name={this.state.name} 

@@ -42,7 +42,7 @@ export default function SetupMenuBar(props) {
           </ListItemIcon>
           <ListItemText primary="Delete" />
         </ListItem>
-        <UserLogOut/>
+        <UserLogOut setUserInState={props.setUserInState}/>
       </List>
   )
 }
