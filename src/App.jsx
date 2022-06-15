@@ -1,5 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
+import { CssBaseline } from '@mui/material';
 import Header from './components/Header/Header'
 import AuthPage from "./pages/AuthPage/AuthPage";
 import SetupPage from './pages/SetupPage/SetupPage';
@@ -29,6 +30,7 @@ componentDidMount(){
   render(){
     return (
       <div className="App">
+        <CssBaseline/>
         <Header />
         {this.state.user ?
           <SetupPage/>
