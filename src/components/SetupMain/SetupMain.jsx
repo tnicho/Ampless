@@ -9,7 +9,7 @@ import './SetupMain.css'
 
 export default function SetupMain(props) {
   function handleClickStart(){
-    audioInput.audioStart()
+    audioInput.audioStart(props.overdrive, props.delay)
     props.handleAudioOn()
   }
   function handleClickStop(){

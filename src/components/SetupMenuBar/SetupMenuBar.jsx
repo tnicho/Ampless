@@ -1,5 +1,5 @@
-import { Button, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from '@mui/material'
-import {Delete, Save, RemoveCircle} from '@mui/icons-material/';
+import { Box, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from '@mui/material'
+import {Delete, Save, RemoveCircle, ContentCopy} from '@mui/icons-material/';
 import { DrawerInsideDiv } from '@jon20111/drawer-inside-div'
 import LogoutIcon from '@mui/icons-material/Logout';
 import Drawer from '@mui/material/Drawer'
@@ -23,12 +23,24 @@ export default function SetupMenuBar(props) {
        
     //     <UserLogOut/>
     // </div>
+    <Box
+      display={'flex'}
+      flexDirection={'column'}
+      justifyContent={'space-between'}
+      width ={'auto'}
+    >
      <List>
-        <ListItem button onClick={props.handleSetupNewSetup}>
+        <ListItem button onClick={props.handleNewSetup}>
           <ListItemIcon>
             <RemoveCircle />
           </ListItemIcon>
           <ListItemText primary="Clear" />
+        </ListItem>
+        <ListItem button onClick={props.handleSetupCopy}>
+          <ListItemIcon>
+            <ContentCopy />
+          </ListItemIcon>
+          <ListItemText primary="Copy" />
         </ListItem>
         <ListItem button onClick={props.handleSetupSave}>
           <ListItemIcon>
@@ -42,7 +54,8 @@ export default function SetupMenuBar(props) {
           </ListItemIcon>
           <ListItemText primary="Delete" />
         </ListItem>
-        <UserLogOut setUserInState={props.setUserInState}/>
       </List>
+      <UserLogOut setUserInState={props.setUserInState}/>
+    </Box>
   )
 }

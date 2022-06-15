@@ -1,10 +1,12 @@
 let context;
+let overdrive;
+let delay;
 
   
-export function audioStart (){
+export function audioStart (overdriveInput, delayInput){
   context = new AudioContext({latencyHint: 'interactive'})
 
-  setupContext(context)
+  setupContext(overdriveInput, delayInput)
   console.log(context)
 }
 
@@ -27,50 +29,54 @@ function makeDistortionCurve(amount) {
   return curve;
 };
 
-async function setupContext(){
+
+export function handleSetupChange(overdriveInput, delayInput){
+  overdrive.curve = makeDistortionCurve((overdriveInput*10))
+  delay.delayTime.value = (0.1*delayInput)
+}
+
+async function setupContext(overdriveInput, delayInput){
   const input = await getInput()
   if (context.state === 'suspended'){
     await context.resume()
   }
 
   const source = context.createMediaStreamSource(input)
-
-
+//------------------OverDrive-----------------
   const overdriveOutput = context.createGain()
-  //if (Overdrive >0)
+  overdrive = context.createWaveShaper()
+    source.connect(overdrive)
+    overdrive.curve = makeDistortionCurve((overdriveInput*10))
+    overdrive.overSample = '4x'
+    overdrive.connect(overdriveOutput)
 
-  const overdrive = context.createWaveShaper()
-  source.connect(overdrive)
-  overdrive.curve = makeDistortionCurve(400)
-  overdrive.overSample = '4x'
-  overdrive.connect(overdriveOutput)
-
-
+//------------------Delay-----------------
   const delayOutput = context.createGain()
-  overdriveOutput.connect(delayOutput)
-  //if (DelayTime > 0)
-  // const filter = context.createBiquadFilter()
-  // const delay = context.createDelay(1.5)
-  // const feedback = context.createGain()
-  // const delayGain = context.createGain()
 
-
-  // filter.frequency.value = 3200
-  // delay.delayTime.value = 0.5
-  // feedback.gain.value = 0.25
-  // delayGain.gain.value = 0.3
-
-  // filter.connect(delay)
-  // delay.connect(feedback)
-  // feedback.connect(delay)
-  // feedback.connect(delayGain)
-  // delayGain.connect(delayOutput)
-
-
-  //source.connect(delayOutput)
-  delayOutput.connect(context.destination)
-  console.log(context)
+    delay = context.createDelay(1)
+    const filter = context.createBiquadFilter()
+    const feedback = context.createGain()
+    const delayGain = context.createGain()
+  
+  
+    filter.frequency.value = 3200
+    delay.delayTime.value = (0.1*delayInput)
+    feedback.gain.value = 0.5
+    delayGain.gain.value = 0.3
+  
+    overdriveOutput.connect(filter)
+    filter.connect(delay)
+    delay.connect(feedback)
+    feedback.connect(delay)
+    feedback.connect(delayGain)
+    delayGain.connect(delayOutput)
+    overdriveOutput.connect(delayOutput)
+    delayOutput.connect(context.destination)
 }
+
+
+
+
 
 function getInput(){
   return navigator.mediaDevices.getUserMedia({

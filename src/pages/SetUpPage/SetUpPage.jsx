@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import * as audioInput from '../../utils/audio-input'
 import './SetupPage.css'
 import SetupIndex from '../../components/SetupIndex/SetupIndex'
 import SetupMain from '../../components/SetupMain/SetupMain'
@@ -65,7 +66,7 @@ export default class SetupPage extends Component {
   handleNewSetup = () => {
     this.setState({
       id: '',
-      name: 'Insert A Name',
+      name: 'Insert a Name',
       overdrive: 0,
       delay: 0,
     })
@@ -126,6 +127,7 @@ export default class SetupPage extends Component {
   handleChange = (e) => {
     console.log(e);
     this.setState({ [e.target.name]: e.target.value });
+    if (this.state.audioOn) audioInput.handleSetupChange(this.state.overdrive, this.state.delay)
   };
 
   handleSetupSave = () => {
@@ -134,7 +136,12 @@ export default class SetupPage extends Component {
     }else{
       this.handleSetupUpdate()
     }
-
+  }
+  handleSetupCopy = () => {
+    this.setState({
+      id: '',
+      name: 'Insert a Name'
+    })
   }
 
 
@@ -147,6 +154,7 @@ export default class SetupPage extends Component {
           handleNewSetup = {this.handleNewSetup}
           handleSetupDelete = {this.handleSetupDelete}
           setUserInState = {this.props.setUserInState}
+          handleSetupCopy = {this.handleSetupCopy}
         />
         <SetupMain 
           name={this.state.name} 
