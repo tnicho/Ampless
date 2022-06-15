@@ -113,9 +113,6 @@ export default class SetupPage extends Component {
 
   }
 
-  handleTitleChange = (text) => {
-    this.setState({name: text })
-  }
 
   handleChange = (e) => {
     console.log(e);
@@ -145,7 +142,6 @@ export default class SetupPage extends Component {
           name={this.state.name} 
           overdrive = {this.state.overdrive} 
           handleChange = {this.handleChange}
-          handleTitleChange = {this.handleTitleChange}
           delay = {this.state.delay}/>
         <SetupIndex setups= {this.state.setups} handleSetupSelect = {this.handleSetupSelect}/>
       </div>

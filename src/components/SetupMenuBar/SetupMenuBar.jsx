@@ -23,21 +23,20 @@ export default function SetupMenuBar(props) {
        
     //     <UserLogOut/>
     // </div>
-    <div className = 'SetupMenuDrawer'>
      <List>
-        <ListItem button>
+        <ListItem button onClick={props.handleSetupNewSetup}>
           <ListItemIcon>
             <RemoveCircle />
           </ListItemIcon>
           <ListItemText primary="Clear" />
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={props.handleSetupSave}>
           <ListItemIcon>
             <Save />
           </ListItemIcon>
           <ListItemText primary="Save" />
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={props.handleSetupDelete}>
           <ListItemIcon>
             <Delete />
           </ListItemIcon>
@@ -45,7 +44,5 @@ export default function SetupMenuBar(props) {
         </ListItem>
         <UserLogOut/>
       </List>
-
-    </div>
   )
 }
