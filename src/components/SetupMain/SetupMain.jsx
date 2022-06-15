@@ -8,8 +8,12 @@ import * as audioInput from '../../utils/audio-input'
 import './SetupMain.css'
 
 export default function SetupMain(props) {
-  function handleClick(){
+  function handleClickStart(){
     audioInput.audioStart()
+    props.handleAudioOn()
+  }
+  function handleClickStop(){
+    audioInput.audioStop()
     props.handleAudioOn()
   }
 
@@ -62,13 +66,19 @@ export default function SetupMain(props) {
         }}
       >
         {props.audioOn ?
-          <Button variant="contained" startIcon={<MusicOff />} endIcon={<MusicOff/>}>Stop</Button>
+          <Button 
+          variant="contained" 
+          startIcon={<MusicOff />} 
+          endIcon={<MusicOff/>}
+          onClick={() => {handleClickStop()}}
+          >Stop
+          </Button>
           :
           <Button  
           variant="contained" 
           startIcon={<MusicNote />} 
           endIcon={<MusicNote/>} 
-          onClick={() => {handleClick()}}
+          onClick={() => {handleClickStart()}}
           >Start
           </Button>
         }
