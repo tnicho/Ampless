@@ -13,7 +13,7 @@ export default class UserLogOut extends Component {
     return (
       <ListItem button onClick={this.handleLogOut}>
         <ListItemIcon>
-          <Logout fontSize="large" style={{ color: 'FFFFFF' }}/>
+          <Logout fontSize="large" style={{ color: '#FFFFFF' }}/>
         </ListItemIcon>
         <ListItemText 
           primaryTypographyProps={{

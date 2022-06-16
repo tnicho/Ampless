@@ -1,7 +1,9 @@
+
 let context;
 let overdrive;
 let delay;
 let gainBoost;
+let reverb;
 
 export function handleSetupChange(overdriveInput, delayInput, gainInput){
   overdrive.curve = makeDistortionCurve((overdriveInput*10))
@@ -45,6 +47,18 @@ function makeDistortionCurve(amount) {
   }
   return curve;
 };
+
+async function createReverb() {
+  let convolver = context.createConvolver();
+  console.log("convolver " , convolver)
+  // load impulse response from file
+  let response     = await fetch('./LargeLongEchoHall.wav');
+  console.log("response " , response)
+  let arraybuffer  = await response.arrayBuffer();
+  console.log("arraybuffer" , arraybuffer)
+  convolver.buffer = await context.decodeAudioData(arraybuffer);
+  return convolver;
+}
 
 
 
@@ -93,7 +107,21 @@ async function setupContext(overdriveInput, delayInput, gainInput){
   gainBoost.gain.value = (1 + (0.4*gainInput) )
 
 
-  //---------Output---------------
-  gainBoost.connect(context.destination)
-}
+//-------------Reverb-------------
+// const reverb = context.createConvolver();
+// await fetch('src/utils/assets/LargeLongEchoHall.wav')
+//   .then(response => response.arrayBuffer())
+//   .then(data => {
+//     return context.decodeAudioData(data, buffer => {
+//       reverb.buffer = buffer;
+//     });
+//   });
+  reverb = await createReverb();
 
+  gainBoost.connect(reverb)
+
+
+  //---------Output---------------
+  //gainBoost.connect(context.destination)
+  reverb.connect(context.destination)
+}
