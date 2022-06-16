@@ -6,6 +6,7 @@ import './SliderBox.css'
 export default function SliderBox(props) {
   return (
     <Box
+    sx={{borderColor: 'background.paper'}}
     border= {2}
     display= 'flex'
     flexDirection= 'column'

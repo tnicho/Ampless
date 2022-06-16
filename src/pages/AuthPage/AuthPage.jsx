@@ -21,7 +21,6 @@ export default class AuthPage extends React.Component {
       >
         <Box>
           <Header/>
-
         </Box>
         {/* Another ternary operator! */}
         {/* If showLogin is true, show the login form. If false, show the signup form */}

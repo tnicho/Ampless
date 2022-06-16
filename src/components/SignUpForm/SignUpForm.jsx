@@ -1,4 +1,7 @@
 import { Component } from "react";
+import { Box, Container, Button, Typography, TextField, Avatar } from "@mui/material";
+import LockIcon from '@mui/icons-material/Lock';
+
 
 export default class SignUpForm extends Component {
   state = {
@@ -36,50 +39,73 @@ export default class SignUpForm extends Component {
   };
 
   render() {
-    const disable = this.state.password !== this.state.confirm;
+    const disable = ((this.state.name==="")||(this.state.email==="")||(this.state.password==="")||(this.state.password !== this.state.confirm));
     return (
-      <div>
-        <div className="form-container">
-          <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>Name</label>
-            <input
+      <Container component="main">
+        <Box       
+          sx={{
+          display:"flex",
+          flexDirection: "column",
+          alignItems: "center",
+          mt: 1
+          }} 
+          component="form" 
+          onSubmit={this.handleSubmit}
+          >
+            <Avatar sx={{ m: 1, bgcolor: 'background.paper' }} style={{maxWidth: '50px', maxHeight: '50px', minWidth: '50px', minHeight: '50px'}}>
+              {<LockIcon style={{maxWidth: '35px', maxHeight: '35px', minWidth: '35px', minHeight: '35px'}}/>}
+            </Avatar>
+            <Typography sx={{my: 1}} variant = "h4">Sign up</Typography>
+            <TextField
+              sx={{width: '445px', my:1}}
+              id="name"
               type="text"
               name="name"
+              placeholder="Name"
+              autoComplete="off"
               value={this.state.name}
               onChange={this.handleChange}
               required
+              autofocus
             />
-            <label>Email</label>
-            <input
-              type="email"
+            {/* <Typography sx={{my: 1}} variant = "h4">Email</Typography> */}
+            <TextField
+              sx={{width: '445px', mt:3}}
+              id="email"
               name="email"
+              placeholder="Email Address"
+              autoComplete="off"
               value={this.state.email}
               onChange={this.handleChange}
               required
             />
-            <label>Password</label>
-            <input
+            {/* <Typography sx={{my: 1}} variant = "h4">Password</Typography> */}
+            <TextField
+              sx={{width: '445px', mt:4}}
               type="password"
+              placeholder="Password"
               name="password"
+              autoComplete="off"
               value={this.state.password}
               onChange={this.handleChange}
               required
             />
-            <label>Confirm</label>
-            <input
+            {/* <Typography sx={{my: 1}} variant = "h4">Confirm Password</Typography> */}
+            <TextField
+              sx={{width: '445px', mt:4}}
               type="password"
               name="confirm"
+              placeholder="Confirm Password"
               value={this.state.confirm}
               onChange={this.handleChange}
               required
             />
-            <button type="submit" disabled={disable}>
+            <Button sx={{width: '445px', mt: 5}} style={{fontSize: '20px'}} variant="contained" type="submit" disabled={disable}>
               SIGN UP
-            </button>
-          </form>
-        </div>
-        <p className="error-message">&nbsp;{this.state.error}</p>
-      </div>
+            </Button>
+          </Box>
+        <Typography>&nbsp;{this.state.error}</Typography>
+      </Container>
     );
   }
 }

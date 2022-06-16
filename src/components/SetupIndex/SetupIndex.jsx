@@ -12,9 +12,9 @@ export default function SetupIndex(props) {
     background="secondary.main"
   >
     <Box
-      sx={{display: 'flex', justifyContent: 'center', mb: 5}}
+      sx={{display: 'flex', justifyContent: 'center', mb: 3}}
     >
-      <Typography color= 'text.secondary' variant='h5'>Saved Setups</Typography>
+      <Typography sx={{mt: 2}} color= 'text.secondary' variant='h5'>Saved Setups</Typography>
       <Divider/>
     </Box>
     {props.setups.map(su => 

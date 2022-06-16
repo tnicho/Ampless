@@ -1,5 +1,6 @@
-import { Box, Container, Button, Typography } from "@mui/material";
+import { Box, Container, Button, Typography, Avatar } from "@mui/material";
 import TextField from '@mui/material/TextField'
+import LockIcon from '@mui/icons-material/Lock';
 import { Component } from "react";
 import "./LoginForm.css";
 
@@ -41,6 +42,7 @@ export default class LoginForm extends Component {
   render() {
     return (
       <Container component="main">
+
         <Box       
         sx={{
         display:"flex",
@@ -51,24 +53,26 @@ export default class LoginForm extends Component {
         component="form" 
         onSubmit={this.handleSubmit}
         >
-            <Typography sx={{my: 1}} variant = "h4">Email</Typography>
+          <Avatar sx={{ m: 1, bgcolor: 'background.paper' }} style={{maxWidth: '50px', maxHeight: '50px', minWidth: '50px', minHeight: '50px'}}>
+          {<LockIcon style={{maxWidth: '35px', maxHeight: '35px', minWidth: '35px', minHeight: '35px'}}/>}
+          </Avatar>
+            <Typography sx={{my: 1}} variant = "h4">Sign in</Typography>
             <TextField
-              sx={{width: '445px'}}
+              sx={{width: '445px', my:1}}
               id="email"
               name="email"
               placeholder="Email Address"
-              label="Email Address"
               autoComplete="off"
               value={this.state.email}
               onChange={this.handleChange}
+              autoFocus
               required
             />
-            <Typography sx={{my: 1}} variant = "h4">Password</Typography>
+            {/* <Typography sx={{my: 1}} variant = "h4">Password</Typography> */}
             <TextField
-              sx={{width: '445px'}}
+              sx={{width: '445px', mt:3}}
               type="password"
               placeholder="Password"
-              label="Password"
               name="password"
               autoComplete="off"
               value={this.state.password}
