@@ -2,7 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import { CssBaseline, Box, createTheme, ThemeProvider } from '@mui/material';
 import AuthPage from "./pages/AuthPage/AuthPage";
-import SetupPage from './pages/SetupPage/SetupPage';
+import SetupPage from "./pages/SetupPage/SetupPage";
 
 
 const theme = createTheme({
