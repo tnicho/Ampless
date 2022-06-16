@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Button, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from '@mui/material'
-import LogoutIcon from '@mui/icons-material/Logout';
+import {Logout} from '@mui/icons-material/';
 
 import './UserLogOut.css';
 
@@ -11,19 +11,18 @@ export default class UserLogOut extends Component {
   }
   render(){
     return (
-      // <div className="UserLogOut">
-      //   {/* <div>{user.name}</div>
-      //   <div className="email">{user.email}</div>
-      //   <button className="btn-sm" onClick={handleLogOut}>LOG OUT</button> */}
-      //   {/* <button>Logout</button> */}
-      //   {/* <Button variant="contained" startIcon={<LogoutIcon />}>LogOut</Button> */}
-
-      // </div>
       <ListItem button onClick={this.handleLogOut}>
         <ListItemIcon>
-          <LogoutIcon />
+          <Logout fontSize="large" style={{ color: '#f7ebe9' }}/>
         </ListItemIcon>
-        <ListItemText primary="Logout" />
+        <ListItemText 
+          primaryTypographyProps={{
+            fontSize: 20,
+            fontWeight: 'medium',
+            color: 'text.secondary'
+          }} 
+          primary="Logout" 
+          />
     </ListItem>
     );
   }

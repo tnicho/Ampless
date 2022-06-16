@@ -11,51 +11,83 @@ import "./SetupMenuBar.css"
 
 export default function SetupMenuBar(props) {
   return (
-    // <div className= 'SetupMenuBar'>
-    //     SetupMenuBar
-        
-    //     {/* <button onClick={props.handleNewSetup}> New Blank Setup</button> */}
-    //     {/* <button onClick={props.handleSetupSave}>Save</button> */}
-    //     {/* <button onClick={props.handleSetupDelete}>Delete</button> */}
-    //     <Button variant="contained" startIcon={<RemoveCircle />}onClick={props.handleSetupNewSetup}>Clear</Button>
-    //     <Button variant="contained" startIcon={<Save />}onClick={props.handleSetupSave}>Save</Button>
-    //     <Button variant="contained" startIcon={<Delete />}onClick={props.handleSetupDelete}>Delete</Button>
-       
-    //     <UserLogOut/>
-    // </div>
-    <Box
-      display={'flex'}
-      flexDirection={'column'}
-      justifyContent={'space-between'}
-      width ={'auto'}
-    >
-     <List>
-        <ListItem button onClick={props.handleNewSetup}>
-          <ListItemIcon>
-            <RemoveCircle />
-          </ListItemIcon>
-          <ListItemText primary="Clear" />
-        </ListItem>
-        <ListItem button onClick={props.handleSetupCopy}>
-          <ListItemIcon>
-            <ContentCopy />
-          </ListItemIcon>
-          <ListItemText primary="Copy" />
-        </ListItem>
-        <ListItem button onClick={props.handleSetupSave}>
-          <ListItemIcon>
-            <Save />
-          </ListItemIcon>
-          <ListItemText primary="Save" />
-        </ListItem>
-        <ListItem button onClick={props.handleSetupDelete}>
-          <ListItemIcon>
-            <Delete />
-          </ListItemIcon>
-          <ListItemText primary="Delete" />
-        </ListItem>
-      </List>
-      <UserLogOut setUserInState={props.setUserInState}/>
-    </Box>
+
+      <Drawer
+        variant="permanent"
+        anchor="left"
+      >
+        <Box
+        sx={{
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between"
+        }}>
+        <Box><Typography sx={{ml: 2, mr: 2}} color='text.secondary' variant = 'h3'>AMPLESS</Typography>
+        <List>
+          <ListItem 
+            sx={{mt: 2, mb: 2}} 
+            button  
+            onClick={props.handleNewSetup}
+            >
+            <ListItemIcon >
+              <RemoveCircle fontSize="large" style={{ color: '#f7ebe9' }}/>
+            </ListItemIcon>
+            <ListItemText
+             primaryTypographyProps={{
+                fontSize: 20,
+                fontWeight: 'medium',
+                color: 'text.secondary'
+              }} 
+            primary="Clear" 
+            />
+          </ListItem>
+          <ListItem sx={{mt: 2, mb: 2}} button onClick={props.handleSetupCopy}>
+            <ListItemIcon>
+              <ContentCopy fontSize="large" style={{ color: '#f7ebe9' }}/>
+            </ListItemIcon>
+            <ListItemText 
+              primaryTypographyProps={{
+                fontSize: 20,
+                fontWeight: 'medium',
+                color: 'text.secondary'
+              }} 
+              primary="Copy" 
+            />
+          </ListItem>
+          <ListItem sx={{mt: 2, mb: 2}} button onClick={props.handleSetupSave}>
+            <ListItemIcon>
+              <Save fontSize="large" style={{ color: '#f7ebe9' }}/>
+            </ListItemIcon>
+            <ListItemText
+              primaryTypographyProps={{
+                fontSize: 20,
+                fontWeight: 'medium',
+                color: 'text.secondary'
+              }} 
+              primary="Save" 
+            />
+          </ListItem>
+          <ListItem sx={{mt: 2, mb: 2}} button onClick={props.handleSetupDelete}>
+            <ListItemIcon>
+              <Delete fontSize="large" style={{ color: '#f7ebe9' }}/>
+            </ListItemIcon>
+            <ListItemText 
+              primaryTypographyProps={{
+                fontSize: 20,
+                fontWeight: 'medium',
+                color: 'text.secondary'
+              }}
+               
+              primary="Delete" 
+            />
+          </ListItem>
+        </List>
+        </Box>
+        <Box sx={{mb: 4}}>
+          <UserLogOut setUserInState={props.setUserInState}/>
+        </Box>
+        </Box>
+      </Drawer>
   )
 }

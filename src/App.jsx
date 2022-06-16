@@ -1,9 +1,32 @@
 import './App.css';
 import React, { Component } from 'react';
-import { CssBaseline } from '@mui/material';
-import Header from './components/Header/Header'
+import { CssBaseline, Box, createTheme, ThemeProvider } from '@mui/material';
 import AuthPage from "./pages/AuthPage/AuthPage";
 import SetupPage from './pages/SetupPage/SetupPage';
+
+
+const theme = createTheme({
+  palette:{
+    primary:{
+      main: '#512da8',
+      //light:'#b39ddb',
+      light: '#ede7f6',
+    },
+    background:{
+      //paper: '#f7ebe9'
+      //default: '#f7ebe9',
+      default: '#FFFFFF',
+      paper: '#381f75'
+    },
+    text:{
+      //secondary: '#f7ebe9'
+      secondary: '#FFFFFF' 
+    }
+  }
+
+})
+
+
 
 export default class App extends Component {
   state ={
@@ -29,16 +52,16 @@ componentDidMount(){
 
   render(){
     return (
-      <div className="App">
+      <ThemeProvider theme={theme}>
+      <Box>
         <CssBaseline/>
-        <Header />
         {this.state.user ?
           <SetupPage setUserInState={this.setUserInState}/>
           :
           <AuthPage setUserInState={this.setUserInState} />
         }
-        
-      </div>
+      </Box>
+      </ThemeProvider>
     );
   }
 }

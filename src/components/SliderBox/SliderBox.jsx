@@ -1,17 +1,23 @@
 import React from 'react'
-import {Slider, Typography} from '@mui/material'
+import {Box, Slider, Typography} from '@mui/material'
 import './SliderBox.css'
 
 
 export default function SliderBox(props) {
   return (
-    <div className='SliderBox'>
+    <Box
+    border= {2}
+    display= 'flex'
+    flexDirection= 'column'
+    alignItems= 'center'
+    justifyContent= 'center'
+    >
       <Typography variant='h4'>{props.title} : {props.setupNum}</Typography>
         <Slider
           className = 'SetupSlider'
           sx={{
             paddingTop: 5,
-            width: 400,
+            width: '50%',
             height: 20,
             '& .MuiSlider-thumb': {height: 40, width: 40}
           }}
@@ -25,6 +31,6 @@ export default function SliderBox(props) {
           value = {props.setupNum}
           onChange={props.handleChange}
         />
-    </div>
+    </Box>
   )
 }

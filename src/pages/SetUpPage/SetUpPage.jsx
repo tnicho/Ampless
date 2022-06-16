@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Box, Slider, Typography} from '@mui/material'
 import * as audioInput from '../../utils/audio-input'
 import './SetupPage.css'
 import SetupIndex from '../../components/SetupIndex/SetupIndex'
@@ -23,11 +24,9 @@ export default class SetupPage extends Component {
 
   getSetups = async () => {
     try {
-      console.log('inside getSetups')
       let fetchSetupResponse = await fetch('/api/setups')
       let setups = await fetchSetupResponse.json();
       this.setState({setups: setups})
-      console.log("Hey" ,this.state.setups)
     } catch (err) {
       console.error('ERROR:', err)
     }
@@ -48,7 +47,6 @@ export default class SetupPage extends Component {
           overdrive: this.state.overdrive,
           delay: this.state.delay,
       }
-      console.log(newSetup)
       let jwt = localStorage.getItem('token')
       let fetchResponse = await fetch("/api/setups", {
         method: "POST",
@@ -66,7 +64,7 @@ export default class SetupPage extends Component {
   handleNewSetup = () => {
     this.setState({
       id: '',
-      name: 'Insert a Name',
+      name: 'Insert Setup Name',
       overdrive: 0,
       delay: 0,
     })
@@ -80,7 +78,6 @@ export default class SetupPage extends Component {
         overdrive: this.state.overdrive,
         delay: this.state.delay,
       }
-      console.log("newsetup is ",newSetup)
       let jwt = localStorage.getItem('token')
       let fetchResponse = await fetch("/api/setups/", {
         method: "PUT",
@@ -113,7 +110,6 @@ export default class SetupPage extends Component {
   }
 
   handleSetupSelect = (setup) => {
-    console.log('in SetupSelect', setup)
     this.setState({
       name: setup.name,
       id: setup._id,
@@ -140,7 +136,7 @@ export default class SetupPage extends Component {
   handleSetupCopy = () => {
     this.setState({
       id: '',
-      name: 'Insert a Name'
+      name: 'Insert Setup Name'
     })
   }
 
@@ -148,7 +144,7 @@ export default class SetupPage extends Component {
 
   render() {
     return (
-      <div className='SetupPage'>
+      <Box>
         <SetupMenuBar
           handleSetupSave = {this.handleSetupSave}
           handleNewSetup = {this.handleNewSetup}
@@ -168,7 +164,7 @@ export default class SetupPage extends Component {
           setups= {this.state.setups} 
           handleSetupSelect = {this.handleSetupSelect}
           />
-      </div>
+      </Box>
     )
   }
 }

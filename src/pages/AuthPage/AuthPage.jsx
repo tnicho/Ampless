@@ -3,6 +3,7 @@ import "./AuthPage.css";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import Header from "../../components/Header/Header";
+import { Box, Link } from "@mui/material";
 
 export default class AuthPage extends React.Component {
   state = {
@@ -11,14 +12,17 @@ export default class AuthPage extends React.Component {
 
   render() {
     return (
-      <main className="AuthPage">
-        <div>
+      <Box
+      sx={{
+        display:"flex",
+        flexDirection: "column",
+        alignItems: "center"
+      }}
+      >
+        <Box>
           <Header/>
-          <h3
-            onClick={() => this.setState({ showLogin: !this.state.showLogin })}>
-            {this.state.showLogin ? "SIGN UP" : "LOG IN"}
-          </h3>
-        </div>
+
+        </Box>
         {/* Another ternary operator! */}
         {/* If showLogin is true, show the login form. If false, show the signup form */}
         {this.state.showLogin ? (
@@ -26,7 +30,11 @@ export default class AuthPage extends React.Component {
         ) : (
           <SignUpForm setUserInState={this.props.setUserInState} />
         )}
-      </main>
+          <Link
+            onClick={() => this.setState({ showLogin: !this.state.showLogin })}>
+            {this.state.showLogin ? "Don't have an account? Sign Up" : " Already a user? Login"}
+          </Link>
+      </Box>
     );
   }
 }

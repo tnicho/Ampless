@@ -15,14 +15,19 @@ export default function SetupItem(props) {
     //     <button onClick={() => props.handleSetupSelect(props.setup)}>Open Setup</button>
     // </div>
 
-    <Accordion>
-      <AccordionSummary expandIcon={<ExpandMore/>}>
-        <Typography>{props.setup.name}</Typography>
+    <Accordion  >
+      <AccordionSummary
+        sx={{
+          backgroundColor: "primary.light"
+        }}
+       expandIcon={<ExpandMore/>}
+      >
+        <Typography >{props.setup.name}</Typography>
       </AccordionSummary>
-      <AccordionDetails>
-        <Typography>id: {props.setup._id}</Typography>
-        <Typography>Overdrive: {props.setup.overdrive}</Typography>
-        <Typography>Delay: {props.setup.delay}</Typography>
+      <AccordionDetails sx={{backgroundColor: "primary.light"}}>
+        <Typography >id: {props.setup._id}</Typography>
+        <Typography >Overdrive: {props.setup.overdrive}</Typography>
+        <Typography >Delay: {props.setup.delay}</Typography>
         <Button onClick={() => props.handleSetupSelect(props.setup)}>Open Setup</Button>
       </AccordionDetails>
     </Accordion>

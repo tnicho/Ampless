@@ -5,13 +5,13 @@ import Typography from '@mui/material/Typography';
 
 export default function Header(props) {
     return (
-        <Box 
+        <Box
+        sx={{my: '20%', color: 'primary.dark'}}
         height= "auto"
         width= "auto"
         display= "flex"
         justifyContent= "center"
         alignItems="center"
-        boxShadow={2}
         >
             <Typography variant='h1'>AMPLESS</Typography>
         </Box>

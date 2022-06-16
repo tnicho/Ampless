@@ -7,6 +7,7 @@ import SliderBox from '../SliderBox/SliderBox'
 import * as audioInput from '../../utils/audio-input'
 import './SetupMain.css'
 
+
 export default function SetupMain(props) {
   function handleClickStart(){
     audioInput.audioStart(props.overdrive, props.delay)
@@ -19,8 +20,12 @@ export default function SetupMain(props) {
 
 
   return (
-    <Box 
+    <Box
     sx={{
+      px:40,
+      position: 'relative',
+      height:"100vh",
+      width: '100%',
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
       gridTemplateRows: '1fr 1fr 1fr 1fr 1fr'
@@ -34,15 +39,9 @@ export default function SetupMain(props) {
           alignItems: 'center'
         }}
       >
-      {/* <EditableLabel
-      labelFontSize = '50px' 
-      inputFontSize = '50px' 
-      inputWidth = '30vw' 
-      inputHeight = '50px' 
-      text={props.name} 
-      onFocusOut={props.handleTitleChange
-      }/><br/> */}
       <TextField
+        inputProps={{style: {fontSize: 60, textAlign: 'center'}}} // font size of input text
+        // InputLabelProps={{style: {fontSize: 100}}} // font size of input label
         id="outlined-basic" 
         label="" 
         variant="standard"
@@ -66,18 +65,20 @@ export default function SetupMain(props) {
         }}
       >
         {props.audioOn ?
-          <Button 
+          <Button
+          style={{maxWidth: '20%', maxHeight: '20%', minWidth: '15%', minHeight: '40%', fontSize: 40}}
           variant="contained" 
-          startIcon={<MusicOff />} 
-          endIcon={<MusicOff/>}
+          startIcon={<MusicOff style={{maxWidth: '35px', maxHeight: '35px', minWidth: '35px', minHeight: '35px'}} />} 
+          endIcon={<MusicOff style={{maxWidth: '35px', maxHeight: '35px', minWidth: '35px', minHeight: '35px'}} />}
           onClick={() => {handleClickStop()}}
           >Stop
           </Button>
           :
           <Button  
+          style={{maxWidth: '20%', maxHeight: '20%', minWidth: '15%', minHeight: '40%', fontSize: 40}}
           variant="contained" 
-          startIcon={<MusicNote />} 
-          endIcon={<MusicNote/>} 
+          startIcon={<MusicNote style={{maxWidth: '35px', maxHeight: '35px', minWidth: '35px', minHeight: '35px'}}/>} 
+          endIcon={<MusicNote style={{maxWidth: '35px', maxHeight: '35px', minWidth: '35px', minHeight: '35px'}}/>} 
           onClick={() => {handleClickStart()}}
           >Start
           </Button>

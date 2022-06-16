@@ -1,16 +1,24 @@
 import React from 'react'
-import {Box, Typography} from '@mui/material'
+import {Drawer, Typography, Box, Divider} from '@mui/material'
 import './SetupIndex.css'
 import SetupItem from '../SetupItem/SetupItem'
 
 export default function SetupIndex(props) {
 
   return (
-    <Box 
+    <Drawer
+    variant="permanent"
+    anchor="right"
+    background="secondary.main"
+  >
+    <Box
+      sx={{display: 'flex', justifyContent: 'center', mb: 5}}
     >
-    <Typography>Saved Setups</Typography>
+      <Typography color= 'text.secondary' variant='h5'>Saved Setups</Typography>
+      <Divider/>
+    </Box>
     {props.setups.map(su => 
       <SetupItem key={su._id} setup={su} handleSetupSelect={props.handleSetupSelect}/>)}
-    </Box>
+    </Drawer>
   )
 }
