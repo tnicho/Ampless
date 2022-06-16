@@ -15,9 +15,9 @@ export default function SetupItem(props) {
         <Typography >{props.setup.name}</Typography>
       </AccordionSummary>
       <AccordionDetails sx={{backgroundColor: "primary.light"}}>
-        <Typography >id: {props.setup._id}</Typography>
         <Typography >Overdrive: {props.setup.overdrive}</Typography>
         <Typography >Delay: {props.setup.delay}</Typography>
+        <Typography >GainBoost: {props.setup.gainBoost}</Typography>
         <Button onClick={() => props.handleSetupSelect(props.setup)}>Open Setup</Button>
       </AccordionDetails>
     </Accordion>

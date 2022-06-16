@@ -19,7 +19,7 @@ async function index(req, res) {
 async function create(req, res) {
     let newSetup = req.body.newSetup
     try{
-        await Setup.create({name: newSetup.name, overdrive: parseInt(newSetup.overdrive), delay: parseInt(newSetup.delay), user: req.user._id}),
+        await Setup.create({name: newSetup.name, overdrive: parseInt(newSetup.overdrive), delay: parseInt(newSetup.delay), gainBoost: parseInt(newSetup.gainBoost), user: req.user._id}),
         res.status(200).json('ok')
     }catch(err){
         console.log('Failed', err)
@@ -45,7 +45,7 @@ async function update(req, res) {
     try{
         await Setup.updateOne(
             {_id: newSetup.id},
-            {$set :{name: newSetup.name, overdrive: parseInt(newSetup.overdrive), delay: parseInt(newSetup.delay)}})
+            {$set :{name: newSetup.name, overdrive: parseInt(newSetup.overdrive), delay: parseInt(newSetup.delay), gainBoost: parseInt(newSetup.gainBoost), user: req.user._id}})
         res.status(200).json('ok')
     }catch(err){
         console.log('Failed')

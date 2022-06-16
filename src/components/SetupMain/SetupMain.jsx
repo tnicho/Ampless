@@ -10,7 +10,7 @@ import './SetupMain.css'
 
 export default function SetupMain(props) {
   function handleClickStart(){
-    audioInput.audioStart(props.overdrive, props.delay)
+    audioInput.audioStart(props.overdrive, props.delay, props.gainBoost)
     props.handleAudioOn()
   }
   function handleClickStop(){
@@ -55,7 +55,7 @@ export default function SetupMain(props) {
       <SliderBox className = 'Tremelo' title= {'Tremelo COMING SOON'} />
       <SliderBox className = 'Reverb' title= {'Reverb COMING SOON'} />
       <SliderBox className = 'Chorus' title= {'Chorus COMING SOON'} />
-      <SliderBox className = 'Gain' title = {'Gain COMING SOON'} />
+      <SliderBox className = 'Gain' title = {'GainBoost'} name= {'gainBoost'} setupNum={props.gainBoost} handleChange = {props.handleChange}/>
       <Box
         sx={{
           gridColumn:'1/3',

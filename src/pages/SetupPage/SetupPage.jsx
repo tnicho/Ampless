@@ -14,6 +14,7 @@ export default class SetupPage extends Component {
     name: '',
     overdrive: 0,
     delay: 0,
+    gainBoost: 0,
     //Add new Effects in here
   }
 
@@ -48,6 +49,7 @@ export default class SetupPage extends Component {
           name: this.state.name,
           overdrive: this.state.overdrive,
           delay: this.state.delay,
+          gainBoost: this.state.gainBoost
           //Add new effects in here
       }
       let jwt = localStorage.getItem('token')
@@ -80,6 +82,7 @@ export default class SetupPage extends Component {
         name: this.state.name,
         overdrive: this.state.overdrive,
         delay: this.state.delay,
+        gainBoost: this.state.gainBoost,
         //Add enw effects in here
       }
       let jwt = localStorage.getItem('token')
@@ -118,7 +121,8 @@ export default class SetupPage extends Component {
       name: setup.name,
       id: setup._id,
       overdrive: setup.overdrive,
-      delay: setup.delay
+      delay: setup.delay,
+      gainBoost: setup.delay
     })
 
   }
@@ -127,7 +131,7 @@ export default class SetupPage extends Component {
   handleChange = (e) => {
     console.log(e);
     this.setState({ [e.target.name]: e.target.value });
-    if (this.state.audioOn) audioInput.handleSetupChange(this.state.overdrive, this.state.delay)
+    if (this.state.audioOn) audioInput.handleSetupChange(this.state.overdrive, this.state.delay, this.state.gainBoost)
   };
 
   handleSetupSave = () => {
@@ -161,6 +165,7 @@ export default class SetupPage extends Component {
           overdrive = {this.state.overdrive} 
           handleChange = {this.handleChange}
           delay = {this.state.delay}
+          gainBoost = {this.state.gainBoost}
           audioOn = {this.state.audioOn}
           handleAudioOn = {this.handleAudioOn}
         />

@@ -13,6 +13,11 @@ const setupSchema = new Schema({
       min: 0,
       max: 10,
     },
+    gainBoost: {
+      type: Number,
+      min: 0,
+      max: 10,
+    },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 
   },{

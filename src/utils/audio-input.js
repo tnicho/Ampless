@@ -1,12 +1,29 @@
 let context;
 let overdrive;
 let delay;
+let gainBoost;
 
-  
-export function audioStart (overdriveInput, delayInput){
+export function handleSetupChange(overdriveInput, delayInput, gainInput){
+  overdrive.curve = makeDistortionCurve((overdriveInput*10))
+  delay.delayTime.value = (0.1*delayInput)
+  gainBoost.gain.value = (1+ 0.4*gainInput)
+}
+
+function getInput(){
+  return navigator.mediaDevices.getUserMedia({
+    audio: {
+      echoCancellation: false,
+      autoGainControl: false,
+      noiseSuppression: false,
+      latency: 0
+    }
+  })
+}
+
+export function audioStart (overdriveInput, delayInput, gainInput){
   context = new AudioContext({latencyHint: 'interactive'})
 
-  setupContext(overdriveInput, delayInput)
+  setupContext(overdriveInput, delayInput, gainInput)
   console.log(context)
 }
 
@@ -30,12 +47,8 @@ function makeDistortionCurve(amount) {
 };
 
 
-export function handleSetupChange(overdriveInput, delayInput){
-  overdrive.curve = makeDistortionCurve((overdriveInput*10))
-  delay.delayTime.value = (0.1*delayInput)
-}
 
-async function setupContext(overdriveInput, delayInput){
+async function setupContext(overdriveInput, delayInput, gainInput){
   const input = await getInput()
   if (context.state === 'suspended'){
     await context.resume()
@@ -71,20 +84,16 @@ async function setupContext(overdriveInput, delayInput){
     feedback.connect(delayGain)
     delayGain.connect(delayOutput)
     overdriveOutput.connect(delayOutput)
-    delayOutput.connect(context.destination)
+    
+
+
+//-------------Gain----------------
+  gainBoost = context.createGain()
+  delayOutput.connect(gainBoost)
+  gainBoost.gain.value = (1 + (0.4*gainInput) )
+
+
+  //---------Output---------------
+  gainBoost.connect(context.destination)
 }
 
-
-
-
-
-function getInput(){
-  return navigator.mediaDevices.getUserMedia({
-    audio: {
-      echoCancellation: false,
-      autoGainControl: false,
-      noiseSuppression: false,
-      latency: 0
-    }
-  })
-}
