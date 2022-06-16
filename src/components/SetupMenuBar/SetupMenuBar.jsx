@@ -25,13 +25,13 @@ export default function SetupMenuBar(props) {
         }}>
         <Box><Typography sx={{ml: 2, mr: 2}} color='text.secondary' variant = 'h3'>AMPLESS</Typography>
         <List>
-          <ListItem 
-            sx={{mt: 2, mb: 2}} 
+          <ListItem
+            sx={{mt: 2, mb: 2, "&:hover": {backgroundColor: "#7e57c2", color: "white",}} }
             button  
             onClick={props.handleNewSetup}
             >
             <ListItemIcon >
-              <RemoveCircle fontSize="large" style={{ color: '#f7ebe9' }}/>
+              <RemoveCircle fontSize="large" style={{ color: '#FFFFFF' }}/>
             </ListItemIcon>
             <ListItemText
              primaryTypographyProps={{
@@ -42,9 +42,12 @@ export default function SetupMenuBar(props) {
             primary="Clear" 
             />
           </ListItem>
-          <ListItem sx={{mt: 2, mb: 2}} button onClick={props.handleSetupCopy}>
+          <ListItem 
+            sx={{mt: 2, mb: 2, "&:hover": {backgroundColor: "#7e57c2", color: "white",}}} 
+            button 
+            onClick={props.handleSetupCopy}>
             <ListItemIcon>
-              <ContentCopy fontSize="large" style={{ color: '#f7ebe9' }}/>
+              <ContentCopy fontSize="large" style={{ color: '#FFFFFF' }}/>
             </ListItemIcon>
             <ListItemText 
               primaryTypographyProps={{
@@ -55,9 +58,12 @@ export default function SetupMenuBar(props) {
               primary="Copy" 
             />
           </ListItem>
-          <ListItem sx={{mt: 2, mb: 2}} button onClick={props.handleSetupSave}>
+          <ListItem 
+            sx={{mt: 2, mb: 2, "&:hover": {backgroundColor: "#7e57c2", color: "white",}}} 
+            button 
+            onClick={props.handleSetupSave}>
             <ListItemIcon>
-              <Save fontSize="large" style={{ color: '#f7ebe9' }}/>
+              <Save fontSize="large" style={{ color: '#FFFFFF' }}/>
             </ListItemIcon>
             <ListItemText
               primaryTypographyProps={{
@@ -68,9 +74,12 @@ export default function SetupMenuBar(props) {
               primary="Save" 
             />
           </ListItem>
-          <ListItem sx={{mt: 2, mb: 2}} button onClick={props.handleSetupDelete}>
+          <ListItem 
+            sx={{mt: 2, mb: 2, "&:hover": {backgroundColor: "#7e57c2", color: "white",}}} 
+            button 
+            onClick={props.handleSetupDelete}>
             <ListItemIcon>
-              <Delete fontSize="large" style={{ color: '#f7ebe9' }}/>
+              <Delete fontSize="large" style={{ color: '#FFFFFF' }}/>
             </ListItemIcon>
             <ListItemText 
               primaryTypographyProps={{

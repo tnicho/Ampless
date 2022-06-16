@@ -14,6 +14,7 @@ export default class SetupPage extends Component {
     name: '',
     overdrive: 0,
     delay: 0,
+    //Add new Effects in here
   }
 
   async componentDidMount(){
@@ -24,7 +25,8 @@ export default class SetupPage extends Component {
 
   getSetups = async () => {
     try {
-      let fetchSetupResponse = await fetch('/api/setups')
+      let jwt = localStorage.getItem('token')
+      let fetchSetupResponse = await fetch('/api/setups', {headers: {Authorization: 'Bearer ' + jwt}})
       let setups = await fetchSetupResponse.json();
       this.setState({setups: setups})
     } catch (err) {
@@ -46,6 +48,7 @@ export default class SetupPage extends Component {
           name: this.state.name,
           overdrive: this.state.overdrive,
           delay: this.state.delay,
+          //Add new effects in here
       }
       let jwt = localStorage.getItem('token')
       let fetchResponse = await fetch("/api/setups", {
@@ -77,6 +80,7 @@ export default class SetupPage extends Component {
         name: this.state.name,
         overdrive: this.state.overdrive,
         delay: this.state.delay,
+        //Add enw effects in here
       }
       let jwt = localStorage.getItem('token')
       let fetchResponse = await fetch("/api/setups/", {

@@ -9,7 +9,7 @@ module.exports = {
 
 async function index(req, res) {
     try{
-        const setups = await Setup.find({}).sort('')
+        const setups = await Setup.find({user:req.user._id}).sort('')
         res.status(200).json(setups)
     }catch{
         res.status(400).json(err)
@@ -17,10 +17,9 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
-    console.log('inside create' , req.body)
     let newSetup = req.body.newSetup
     try{
-        await Setup.create({name: newSetup.name, overdrive: parseInt(newSetup.overdrive), delay: parseInt(newSetup.delay)})
+        await Setup.create({name: newSetup.name, overdrive: parseInt(newSetup.overdrive), delay: parseInt(newSetup.delay), user: req.user._id}),
         res.status(200).json('ok')
     }catch(err){
         console.log('Failed', err)
