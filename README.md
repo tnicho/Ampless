@@ -6,7 +6,11 @@ Final Project of the General Assembly SEI Course
 
 ----ScreenShots----
 
-{Insert}
+Login:https://github.com/tnicho/Ampless/blob/main/Ampless%20Login.png
+
+Signup:https://github.com/tnicho/Ampless/blob/main/Ampless%20Signup.png
+
+Main Page:https://github.com/tnicho/Ampless/blob/main/Ampless%20Main%20Page.png
 
 ----Technologies Used----
 
