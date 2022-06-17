@@ -17,18 +17,27 @@ MongoDB, Express, React, Node, Material UI, Heroku, VSCode
 Designed to be used with a guitar and a converter from guitar jack to USB
 
 Use Switches to enable an effect
+
 Use Sliders to adjust the intensity of the effects
+
 Press Start Button to begin registering input
+
 Press Stop Button to end registering input
+
 Save will save the values of the effects, or "Setups" into a file.
+
 These "Setups" can be found on the right hand side by name.
+
 Delete a "Setup" by opening it from the right hand side and pressing the delete button on the left hand side
 
 Current effects:
 
 Overdrive made with createWaveShaper() and makeDistortionCurve
+
 Delay- made with a feedback loop of gain nodes
+
 GainBoost - made with a simple gain node
+
 Reverb - made with createConvolver()
 
 Deployed website: https://ampless.herokuapp.com/
@@ -37,8 +46,7 @@ Planning:
 Trello Board: https://trello.com/invite/b/519s3oEn/01bdfcb014b5cb94c9f695e51c8a92a1/final-project-ampless
 
 WireFrames:   https://github.com/tnicho/Ampless/blob/main/WireFrames1.png
-              
-              https://github.com/tnicho/Ampless/blob/main/WireFrame2.png
+          :   https://github.com/tnicho/Ampless/blob/main/WireFrame2.png
               
 ERD:          https://github.com/tnicho/Ampless/blob/main/ERD.png
 
