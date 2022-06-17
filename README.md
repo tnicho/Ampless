@@ -53,10 +53,16 @@ ERD:          https://github.com/tnicho/Ampless/blob/main/ERD.png
 ----Next Steps----
 
 Allow selection between different impulses for Reverb effect
+
 Create Tremelo effect
+
 Create Chorus effect
-Require confirmation when deleting a Setup
+
+Require confirmation when deleting a "Setup"
+
 Enable a "Dark Mode" theming
-Allow Recordings of audio files under each Setup
+
+Allow Recordings of audio files under each "Setup"
+
 Create CRUD functionality for recordings
 
