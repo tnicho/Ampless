@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+----AMPLESS----
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Audio Input Manipulation without on your desktop, no effects pedals or an amp required
 
-## Available Scripts
+Final Project of the General Assembly SEI Course
 
-In the project directory, you can run:
+----ScreenShots----
 
-### `npm start`
+Login:https://github.com/tnicho/Ampless/blob/main/Ampless%20Login.png
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Signup:https://github.com/tnicho/Ampless/blob/main/Ampless%20Signup.png
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Main Page:https://github.com/tnicho/Ampless/blob/main/Ampless%20Main%20Page.png
 
-### `npm test`
+----Technologies Used----
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+MongoDB, Express, React, Node, Material UI, Heroku, VSCode
 
-### `npm run build`
+----Getting Started----
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Designed to be used with a guitar and a converter from guitar jack to USB
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Use Switches to enable an effect
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Use Sliders to adjust the intensity of the effects
 
-### `npm run eject`
+Press Start Button to begin registering input
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Press Stop Button to end registering input
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Save will save the values of the effects, or "Setups" into a file.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+These "Setups" can be found on the right hand side by name.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Delete a "Setup" by opening it from the right hand side and pressing the delete button on the left hand side
 
-## Learn More
+Current effects:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Overdrive made with createWaveShaper() and makeDistortionCurve
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Delay- made with a feedback loop of gain nodes
 
-### Code Splitting
+GainBoost - made with a simple gain node
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Reverb - made with createConvolver()
 
-### Analyzing the Bundle Size
+Deployed website: https://ampless.herokuapp.com/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Planning:
+Trello Board: https://trello.com/invite/b/519s3oEn/01bdfcb014b5cb94c9f695e51c8a92a1/final-project-ampless
 
-### Making a Progressive Web App
+WireFrames:   https://github.com/tnicho/Ampless/blob/main/WireFrames1.png
+          :   https://github.com/tnicho/Ampless/blob/main/WireFrame2.png
+              
+ERD:          https://github.com/tnicho/Ampless/blob/main/ERD.png
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+----Next Steps----
 
-### Advanced Configuration
+Allow selection between different impulses for Reverb effect
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Create Tremelo effect
 
-### Deployment
+Create Chorus effect
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Require confirmation when deleting a "Setup"
 
-### `npm run build` fails to minify
+Enable a "Dark Mode" theming
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Allow Recordings of audio files under each "Setup"
+
+Create CRUD functionality for recordings
+
