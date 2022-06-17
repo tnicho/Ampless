@@ -19,7 +19,16 @@ async function index(req, res) {
 async function create(req, res) {
     let newSetup = req.body.newSetup
     try{
-        await Setup.create({name: newSetup.name, overdrive: parseInt(newSetup.overdrive), delay: parseInt(newSetup.delay), gainBoost: parseInt(newSetup.gainBoost), user: req.user._id}),
+        await Setup.create({
+            name: newSetup.name,
+             overdrive: parseInt(newSetup.overdrive), 
+             overdriveOn: JSON.parse(newSetup.overdriveOn), 
+             delay: parseInt(newSetup.delay), 
+             delayOn: JSON.parse(newSetup.delayOn), 
+             gainBoost: parseInt(newSetup.gainBoost), 
+             gainBoostOn: JSON.parse(newSetup.gainBoostOn), 
+             reverbOn: JSON.parse(newSetup.reverbOn), 
+             user: req.user._id}),
         res.status(200).json('ok')
     }catch(err){
         console.log('Failed', err)
@@ -45,7 +54,16 @@ async function update(req, res) {
     try{
         await Setup.updateOne(
             {_id: newSetup.id},
-            {$set :{name: newSetup.name, overdrive: parseInt(newSetup.overdrive), delay: parseInt(newSetup.delay), gainBoost: parseInt(newSetup.gainBoost), user: req.user._id}})
+            {$set :{
+                name: newSetup.name, 
+                overdrive: parseInt(newSetup.overdrive),
+                overdriveOn: JSON.parse(newSetup.overdriveOn),   
+                delay: parseInt(newSetup.delay),
+                delayOn: JSON.parse(newSetup.delayOn), 
+                gainBoost: parseInt(newSetup.gainBoost),
+                gainBoostOn: JSON.parse(newSetup.gainBoostOn),
+                reverbOn: JSON.parse(newSetup.reverbOn), 
+                user: req.user._id}})
         res.status(200).json('ok')
     }catch(err){
         console.log('Failed')

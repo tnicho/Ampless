@@ -1,14 +1,15 @@
 
 let context;
 let overdrive;
+let delayNode;
 let delay;
 let gainBoost;
 let reverb;
 
-export function handleSetupChange(overdriveInput, delayInput, gainInput){
-  overdrive.curve = makeDistortionCurve((overdriveInput*10))
-  delay.delayTime.value = (0.1*delayInput)
-  gainBoost.gain.value = (1+ 0.4*gainInput)
+export function handleSetupChange(overdriveInput, overdriveOn, delayInput, delayOn, gainBoostInput, gainBoostOn, reverbOn){
+  if(overdriveOn) overdrive.curve = makeDistortionCurve((overdriveInput*10))
+  if(delayOn) delay.delayTime.value = (0.1*delayInput)
+  if (gainBoostOn)gainBoost.gain.value = (1+ 0.4*gainBoostInput)
 }
 
 function getInput(){
@@ -22,10 +23,10 @@ function getInput(){
   })
 }
 
-export function audioStart (overdriveInput, delayInput, gainInput){
+export function audioStart (overdriveInput, overdriveOn, delayInput, delayOn, gainBoostInput, gainBoostOn, reverbOn){
   context = new AudioContext({latencyHint: 'interactive'})
 
-  setupContext(overdriveInput, delayInput, gainInput)
+  setupContext(overdriveInput, overdriveOn, delayInput, delayOn, gainBoostInput, gainBoostOn, reverbOn)
   console.log(context)
 }
 
@@ -60,9 +61,45 @@ async function createReverb() {
   return convolver;
 }
 
+function makeGainBoost(gainBoostInput){
+  let tempgainBoost = context.createGain()
+  tempgainBoost.gain.value = (1 + (0.4*gainBoostInput) )
+  return tempgainBoost
+}
+
+function makeOverdrive(overdriveInput){
+  let tempOverdrive = context.createWaveShaper()
+  tempOverdrive.curve = makeDistortionCurve((overdriveInput*10))
+  tempOverdrive.overSample = '4x'
+  return tempOverdrive
+}
+
+function makeDelay(previousNode, delayInput){
+  let delayOutput = context.createGain()
+
+  delay = context.createDelay(1)
+  let filter = context.createBiquadFilter()
+  let feedback = context.createGain()
+  let delayGain = context.createGain()
+
+  filter.frequency.value = 3200
+  delay.delayTime.value = (0.1*delayInput)
+  feedback.gain.value = 0.5
+  delayGain.gain.value = 0.3
+
+  previousNode.connect(filter)
+  filter.connect(delay)
+  delay.connect(feedback)
+  feedback.connect(delay)
+  feedback.connect(delayGain)
+  delayGain.connect(delayOutput)
+  previousNode.connect(delayOutput)
+  return delayOutput
+}
 
 
-async function setupContext(overdriveInput, delayInput, gainInput){
+
+async function setupContext(overdriveInput, overdriveOn, delayInput, delayOn, gainBoostInput, gainBoostOn, reverbOn){
   const input = await getInput()
   if (context.state === 'suspended'){
     await context.resume()
@@ -70,58 +107,43 @@ async function setupContext(overdriveInput, delayInput, gainInput){
 
   const source = context.createMediaStreamSource(input)
 //------------------OverDrive-----------------
-  const overdriveOutput = context.createGain()
-  overdrive = context.createWaveShaper()
-    source.connect(overdrive)
-    overdrive.curve = makeDistortionCurve((overdriveInput*10))
-    overdrive.overSample = '4x'
-    overdrive.connect(overdriveOutput)
-
-//------------------Delay-----------------
-  const delayOutput = context.createGain()
-
-    delay = context.createDelay(1)
-    const filter = context.createBiquadFilter()
-    const feedback = context.createGain()
-    const delayGain = context.createGain()
-  
-  
-    filter.frequency.value = 3200
-    delay.delayTime.value = (0.1*delayInput)
-    feedback.gain.value = 0.5
-    delayGain.gain.value = 0.3
-  
-    overdriveOutput.connect(filter)
-    filter.connect(delay)
-    delay.connect(feedback)
-    feedback.connect(delay)
-    feedback.connect(delayGain)
-    delayGain.connect(delayOutput)
-    overdriveOutput.connect(delayOutput)
+    if(overdriveOn){
+      overdrive = makeOverdrive(overdriveInput)
+    }else{
+      overdrive = context.createGain()
+    }
     
-
-
-//-------------Gain----------------
-  gainBoost = context.createGain()
-  delayOutput.connect(gainBoost)
-  gainBoost.gain.value = (1 + (0.4*gainInput) )
-
-
+    
+    //------------------Delay-----------------
+  if(delayOn){
+    delayNode = makeDelay(overdrive, delayInput)
+    
+  }else{
+    delayNode = context.createGain()
+    overdrive.connect(delayNode)
+  }
+ 
+  
+  //-------------Gain----------------
+  
+  if (gainBoostOn){
+    gainBoost = makeGainBoost(gainBoostInput)
+  }else{
+    gainBoost = context.createGain()
+  }
+    
 //-------------Reverb-------------
-// const reverb = context.createConvolver();
-// await fetch('src/utils/assets/LargeLongEchoHall.wav')
-//   .then(response => response.arrayBuffer())
-//   .then(data => {
-//     return context.decodeAudioData(data, buffer => {
-//       reverb.buffer = buffer;
-//     });
-//   });
-  reverb = await createReverb();
 
-  gainBoost.connect(reverb)
+if (reverbOn){
+  reverb = await createReverb();
+}else{
+  reverb = context.createGain()
+}
 
 
   //---------Output---------------
-  //gainBoost.connect(context.destination)
+  source.connect(overdrive)
+  delayNode.connect(gainBoost)
+  gainBoost.connect(reverb)
   reverb.connect(context.destination)
 }

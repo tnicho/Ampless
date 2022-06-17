@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box, Slider, Typography} from '@mui/material'
+import {Box, Slider, Typography, Switch} from '@mui/material'
 import './SliderBox.css'
 
 
@@ -32,6 +32,7 @@ export default function SliderBox(props) {
           value = {props.setupNum}
           onChange={props.handleChange}
         />
+        <Switch />
     </Box>
   )
 }

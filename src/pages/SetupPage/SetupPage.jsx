@@ -13,8 +13,12 @@ export default class SetupPage extends Component {
     id: '',
     name: '',
     overdrive: 0,
+    overdriveOn: false,
     delay: 0,
+    delayOn: false,
     gainBoost: 0,
+    gainBoostOn: false,
+    reverbOn: false,
     //Add new Effects in here
   }
 
@@ -46,10 +50,14 @@ export default class SetupPage extends Component {
   handleSetupCreate = async () => {
     try {
       let newSetup = {
-          name: this.state.name,
-          overdrive: this.state.overdrive,
-          delay: this.state.delay,
-          gainBoost: this.state.gainBoost
+        name: this.state.name,
+        overdrive: this.state.overdrive,
+        overdriveOn: this.state.overdriveOn,
+        delay: this.state.delay,
+        delayOn: this.state.delayOn,
+        gainBoost: this.state.gainBoost,
+        gainBoostOn: this.state.gainBoostOn,
+        reverbOn: this.state.reverbOn
           //Add new effects in here
       }
       let jwt = localStorage.getItem('token')
@@ -81,8 +89,12 @@ export default class SetupPage extends Component {
         id: this.state.id,
         name: this.state.name,
         overdrive: this.state.overdrive,
+        overdriveOn: this.state.overdriveOn,
         delay: this.state.delay,
+        delayOn: this.state.delayOn,
         gainBoost: this.state.gainBoost,
+        gainBoostOn: this.state.gainBoostOn,
+        reverbOn: this.state.reverbOn
         //Add enw effects in here
       }
       let jwt = localStorage.getItem('token')
@@ -121,18 +133,47 @@ export default class SetupPage extends Component {
       name: setup.name,
       id: setup._id,
       overdrive: setup.overdrive,
+      overdriveOn: setup.overdriveOn,
       delay: setup.delay,
-      gainBoost: setup.delay
+      delayOn: setup.delayOn,
+      gainBoost: setup.gainBoost,
+      gainBoostOn: setup.gainBoostOn,
+      reverbOn: setup.reverbOn
     })
 
   }
 
 
+  handleSwitchChange = (e) => {
+    this.setState({ [e.target.name]: e.target.checked ? true : false });
+    if (this.state.audioOn){ 
+      audioInput.handleSetupChange(
+        this.state.overdrive, 
+        this.state.overdriveOn, 
+        this.state.delay, 
+        this.state.delayOn, 
+        this.state.gainBoost,
+        this.state.gainBoostOn,
+        this.state.reverbOn,
+        )
+    }
+  }
+
   handleChange = (e) => {
     console.log(e);
     this.setState({ [e.target.name]: e.target.value });
-    if (this.state.audioOn) audioInput.handleSetupChange(this.state.overdrive, this.state.delay, this.state.gainBoost)
-  };
+    if (this.state.audioOn){ 
+      audioInput.handleSetupChange(
+        this.state.overdrive, 
+        this.state.overdriveOn, 
+        this.state.delay, 
+        this.state.delayOn, 
+        this.state.gainBoost,
+        this.state.gainBoostOn,
+        this.state.reverbOn,
+        )
+    }
+  }
 
   handleSetupSave = () => {
     if(this.state.id === ""){
@@ -162,11 +203,16 @@ export default class SetupPage extends Component {
         />
         <SetupMain 
           name={this.state.name} 
-          overdrive = {this.state.overdrive} 
-          handleChange = {this.handleChange}
+          overdrive = {this.state.overdrive}
+          overdriveOn = {this.state.overdriveOn} 
           delay = {this.state.delay}
+          delayOn = {this.state.delayOn}
           gainBoost = {this.state.gainBoost}
+          gainBoostOn = {this.state.gainBoostOn}
+          reverbOn = {this.state.reverbOn}
           audioOn = {this.state.audioOn}
+          handleChange = {this.handleChange}
+          handleSwitchChange = {this.handleSwitchChange}
           handleAudioOn = {this.handleAudioOn}
         />
         <SetupIndex 

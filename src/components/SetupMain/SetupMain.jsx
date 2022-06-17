@@ -10,7 +10,15 @@ import './SetupMain.css'
 
 export default function SetupMain(props) {
   function handleClickStart(){
-    audioInput.audioStart(props.overdrive, props.delay, props.gainBoost)
+    audioInput.audioStart(
+      props.overdrive, 
+      props.overdriveOn, 
+      props.delay, 
+      props.delayOn, 
+      props.gainBoost,
+      props.gainBoostOn,
+      props.reverbOn
+      )
     props.handleAudioOn()
   }
   function handleClickStop(){
@@ -50,12 +58,41 @@ export default function SetupMain(props) {
         onChange={props.handleChange}
       />
       </Box>
-      <SliderBox className = 'OverdriveSlider' title = {'Overdrive'} name= {'overdrive'} setupNum={props.overdrive} handleChange = {props.handleChange}/>
-      <SliderBox className = 'DelaySlider' title= {'Delay'} name = {'delay'} setupNum={props.delay} handleChange = {props.handleChange}/>
+      <SliderBox className = 'OverdriveSlider' 
+      title = {'Overdrive'} 
+      name= {'overdrive'}
+      switchName={'overdriveOn'}
+      switchChecked={props.overdriveOn} 
+      setupNum={props.overdrive} 
+      handleChange = {props.handleChange}
+      handleSwitchChange = {props.handleSwitchChange}
+      />
+      <SliderBox className = 'DelaySlider' 
+      title= {'Delay'} 
+      name = {'delay'}
+      switchName={'delayOn'}
+      switchChecked={props.delayOn}  
+      setupNum={props.delay} 
+      handleChange = {props.handleChange}
+      handleSwitchChange = {props.handleSwitchChange}
+      />
       <SliderBox className = 'Tremelo' title= {'Tremelo COMING SOON'} />
-      <SliderBox className = 'Reverb' title= {'Reverb COMING SOON'} />
+      <SliderBox className = 'Reverb' 
+      title= {'Reverb'}
+      name = "Reverb"
+      switchName={'reverbOn'}
+      switchChecked={props.reverbOn} 
+      handleChange = {props.handleChange}
+      handleSwitchChange = {props.handleSwitchChange}  />
       <SliderBox className = 'Chorus' title= {'Chorus COMING SOON'} />
-      <SliderBox className = 'Gain' title = {'GainBoost'} name= {'gainBoost'} setupNum={props.gainBoost} handleChange = {props.handleChange}/>
+      <SliderBox className = 'Gain' 
+      title = {'GainBoost'} 
+      name= {'gainBoost'}
+      switchName={'gainBoostOn'}
+      switchChecked={props.gainBoostOn}  
+      setupNum={props.gainBoost} 
+      handleChange = {props.handleChange}
+      handleSwitchChange = {props.handleSwitchChange}/>
       <Box
         sx={{
           gridColumn:'1/3',

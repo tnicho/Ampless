@@ -1,5 +1,5 @@
 import { ExpandMore } from '@mui/icons-material'
-import {Accordion, Button, AccordionSummary, AccordionDetails, Typography, CssBaseline} from '@mui/material'
+import {Accordion, Button, AccordionSummary, AccordionDetails, Typography} from '@mui/material'
 import React from 'react'
 import './SetupItem.css'
 
@@ -18,6 +18,7 @@ export default function SetupItem(props) {
         <Typography >Overdrive: {props.setup.overdrive}</Typography>
         <Typography >Delay: {props.setup.delay}</Typography>
         <Typography >GainBoost: {props.setup.gainBoost}</Typography>
+        <Typography >Reverb: {props.setup.reverbOn ? "On" : "Off"}</Typography>
         <Button onClick={() => props.handleSetupSelect(props.setup)}>Open Setup</Button>
       </AccordionDetails>
     </Accordion>
