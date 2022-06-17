@@ -35,8 +35,17 @@ Deployed website: https://ampless.herokuapp.com/
 
 Planning:
 Trello Board: https://trello.com/invite/b/519s3oEn/01bdfcb014b5cb94c9f695e51c8a92a1/final-project-ampless
+WireFrames:   https://github.com/tnicho/Ampless/blob/main/WireFrames1.png
+              https://github.com/tnicho/Ampless/blob/main/WireFrame2.png
+ERD:          https://github.com/tnicho/Ampless/blob/main/ERD.png
 
+----Next Steps----
 
-
-
+Allow selection between different impulses for Reverb effect
+Create Tremelo effect
+Create Chorus effect
+Require confirmation when deleting a Setup
+Enable a "Dark Mode" theming
+Allow Recordings of audio files under each Setup
+Create CRUD functionality for recordings
 
