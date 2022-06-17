@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+----AMPLESS----
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Audio Input Manipulation without on your desktop, no effects pedals or an amp required
 
-## Available Scripts
+Final Project of the General Assembly SEI Course
 
-In the project directory, you can run:
+----ScreenShots----
 
-### `npm start`
+{Insert}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+----Technologies Used----
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+MongoDB, Express, React, Node, Material UI, Heroku, VSCode
 
-### `npm test`
+----Getting Started----
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Designed to be used with a guitar and a converter from guitar jack to USB
 
-### `npm run build`
+Use Switches to enable an effect
+Use Sliders to adjust the intensity of the effects
+Press Start Button to begin registering input
+Press Stop Button to end registering input
+Save will save the values of the effects, or "Setups" into a file.
+These "Setups" can be found on the right hand side by name.
+Delete a "Setup" by opening it from the right hand side and pressing the delete button on the left hand side
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Current effects:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Overdrive made with createWaveShaper() and makeDistortionCurve
+Delay- made with a feedback loop of gain nodes
+GainBoost - made with a simple gain node
+Reverb - made with createConvolver()
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Deployed website: https://ampless.herokuapp.com/
 
-### `npm run eject`
+Planning:
+Trello Board: https://trello.com/invite/b/519s3oEn/01bdfcb014b5cb94c9f695e51c8a92a1/final-project-ampless
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
