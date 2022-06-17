@@ -1,8 +1,6 @@
 import { Component } from 'react';
-import { Button, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from '@mui/material'
+import { ListItem, ListItemIcon, ListItemText} from '@mui/material'
 import {Logout} from '@mui/icons-material/';
-
-import './UserLogOut.css';
 
 export default class UserLogOut extends Component {
   handleLogOut = () => {

@@ -1,6 +1,5 @@
 import React from 'react'
-import {Box, Slider, Typography, Switch, Card} from '@mui/material'
-import './SliderBox.css'
+import {Box, Slider, Typography, Switch} from '@mui/material'
 
 
 export default function SliderBox(props) {
@@ -34,7 +33,7 @@ export default function SliderBox(props) {
           onChange={props.handleChange}
         />
         <Switch
-        disabled = {(props.audioOn && (!(props.switchChecked))) ? true : false}
+        disabled = {props.audioOn ? true : false}
         color='success'
         size= 'Large'
         name={props.switchName}

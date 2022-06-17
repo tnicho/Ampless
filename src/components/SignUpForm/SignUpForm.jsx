@@ -68,7 +68,6 @@ export default class SignUpForm extends Component {
               required
               autofocus
             />
-            {/* <Typography sx={{my: 1}} variant = "h4">Email</Typography> */}
             <TextField
               sx={{width: '445px', mt:3}}
               id="email"
@@ -79,7 +78,6 @@ export default class SignUpForm extends Component {
               onChange={this.handleChange}
               required
             />
-            {/* <Typography sx={{my: 1}} variant = "h4">Password</Typography> */}
             <TextField
               sx={{width: '445px', mt:4}}
               type="password"
@@ -90,7 +88,6 @@ export default class SignUpForm extends Component {
               onChange={this.handleChange}
               required
             />
-            {/* <Typography sx={{my: 1}} variant = "h4">Confirm Password</Typography> */}
             <TextField
               sx={{width: '445px', mt:4}}
               type="password"

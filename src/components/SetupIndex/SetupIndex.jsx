@@ -1,6 +1,5 @@
 import React from 'react'
 import {Drawer, Typography, Box, Divider} from '@mui/material'
-import './SetupIndex.css'
 import SetupItem from '../SetupItem/SetupItem'
 
 export default function SetupIndex(props) {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import {Box, Slider, Typography} from '@mui/material'
+import {Box} from '@mui/material'
 import * as audioInput from '../../utils/audio-input'
-import './SetupPage.css'
 import SetupIndex from '../../components/SetupIndex/SetupIndex'
 import SetupMain from '../../components/SetupMain/SetupMain'
 import SetupMenuBar from '../../components/SetupMenuBar/SetupMenuBar'
@@ -19,7 +18,6 @@ export default class SetupPage extends Component {
     gainBoost: 0,
     gainBoostOn: false,
     reverbOn: false,
-    //Add new Effects in here
   }
 
   async componentDidMount(){
@@ -58,7 +56,6 @@ export default class SetupPage extends Component {
         gainBoost: this.state.gainBoost,
         gainBoostOn: this.state.gainBoostOn,
         reverbOn: this.state.reverbOn
-          //Add new effects in here
       }
       let jwt = localStorage.getItem('token')
       let fetchResponse = await fetch("/api/setups", {
@@ -100,7 +97,6 @@ export default class SetupPage extends Component {
         gainBoost: this.state.gainBoost,
         gainBoostOn: this.state.gainBoostOn,
         reverbOn: this.state.reverbOn
-        //Add enw effects in here
       }
       let jwt = localStorage.getItem('token')
       let fetchResponse = await fetch("/api/setups/", {

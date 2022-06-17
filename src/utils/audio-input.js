@@ -52,11 +52,8 @@ function makeDistortionCurve(amount) {
 async function createReverb() {
   let convolver = context.createConvolver();
   console.log("convolver " , convolver)
-  // load impulse response from file
   let response     = await fetch('./LargeLongEchoHall.wav');
-  console.log("response " , response)
   let arraybuffer  = await response.arrayBuffer();
-  console.log("arraybuffer" , arraybuffer)
   convolver.buffer = await context.decodeAudioData(arraybuffer);
   return convolver;
 }

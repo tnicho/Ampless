@@ -1,11 +1,8 @@
 import React from 'react'
-import EditableLabel from 'react-inline-editing'
-import {Box, Button, TextField, Typography} from '@mui/material'
+import {Box, Button, TextField} from '@mui/material'
 import { MusicNote, MusicOff } from '@mui/icons-material'
-// import ContentEditable from 'react-contenteditable'
 import SliderBox from '../SliderBox/SliderBox'
 import * as audioInput from '../../utils/audio-input'
-import './SetupMain.css'
 
 
 export default function SetupMain(props) {
@@ -48,8 +45,7 @@ export default function SetupMain(props) {
         }}
       >
       <TextField
-        inputProps={{style: {fontSize: 60, textAlign: 'center'}}} // font size of input text
-        // InputLabelProps={{style: {fontSize: 100}}} // font size of input label
+        inputProps={{style: {fontSize: 60, textAlign: 'center'}}}
         id="outlined-basic" 
         label="" 
         variant="standard"
@@ -78,7 +74,7 @@ export default function SetupMain(props) {
       handleChange = {props.handleChange}
       handleSwitchChange = {props.handleSwitchChange}
       />
-      <SliderBox className = 'Tremelo' title= {'Tremelo COMING SOON'} />
+      <SliderBox className = 'Tremelo' title= {'Tremelo (COMING SOON)'} />
       <SliderBox className = 'Reverb'
       audioOn = {props.audioOn} 
       title= {'Reverb (Work in Progress)'}
@@ -86,8 +82,9 @@ export default function SetupMain(props) {
       switchName={'reverbOn'}
       switchChecked={props.reverbOn} 
       handleChange = {props.handleChange}
-      handleSwitchChange = {props.handleSwitchChange}  />
-      <SliderBox className = 'Chorus' title= {'Chorus COMING SOON'} />
+      handleSwitchChange = {props.handleSwitchChange}  
+      />
+      <SliderBox className = 'Chorus' title= {'Chorus (COMING SOON)'} />
       <SliderBox className = 'Gain'
       audioOn = {props.audioOn} 
       title = {'GainBoost'} 
@@ -96,7 +93,8 @@ export default function SetupMain(props) {
       switchChecked={props.gainBoostOn}  
       setupNum={props.gainBoost} 
       handleChange = {props.handleChange}
-      handleSwitchChange = {props.handleSwitchChange}/>
+      handleSwitchChange = {props.handleSwitchChange}
+      />
       <Box
         sx={{
           gridColumn:'1/3',

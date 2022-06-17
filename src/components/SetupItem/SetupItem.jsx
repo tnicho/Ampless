@@ -1,7 +1,6 @@
 import { ExpandMore } from '@mui/icons-material'
 import {Accordion, Button, AccordionSummary, AccordionDetails, Typography} from '@mui/material'
 import React from 'react'
-import './SetupItem.css'
 
 export default function SetupItem(props) {
   return (

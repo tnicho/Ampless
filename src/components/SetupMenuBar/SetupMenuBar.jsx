@@ -1,12 +1,9 @@
-import { Box, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from '@mui/material'
+import { Box, List, ListItem, ListItemIcon, ListItemText} from '@mui/material'
 import {Delete, Save, RemoveCircle, ContentCopy} from '@mui/icons-material/';
-import { DrawerInsideDiv } from '@jon20111/drawer-inside-div'
-import LogoutIcon from '@mui/icons-material/Logout';
 import Drawer from '@mui/material/Drawer'
 import Typography from '@mui/material/Typography';
 import React from 'react'
 import UserLogOut from '../UserLogOut/UserLogOut'
-import "./SetupMenuBar.css"
 
 
 export default function SetupMenuBar(props) {
@@ -39,7 +36,7 @@ export default function SetupMenuBar(props) {
                 fontWeight: 'medium',
                 color: 'text.secondary'
               }} 
-            primary="Clear" 
+            primary="New" 
             />
           </ListItem>
           <ListItem 
