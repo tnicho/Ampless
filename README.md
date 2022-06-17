@@ -35,8 +35,10 @@ Deployed website: https://ampless.herokuapp.com/
 
 Planning:
 Trello Board: https://trello.com/invite/b/519s3oEn/01bdfcb014b5cb94c9f695e51c8a92a1/final-project-ampless
+
 WireFrames:   https://github.com/tnicho/Ampless/blob/main/WireFrames1.png
               https://github.com/tnicho/Ampless/blob/main/WireFrame2.png
+              
 ERD:          https://github.com/tnicho/Ampless/blob/main/ERD.png
 
 ----Next Steps----
