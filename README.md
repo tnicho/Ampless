@@ -34,7 +34,7 @@ These "Setups" can be found on the right hand side by name.
 
 Delete a "Setup" by opening it from the right hand side and pressing the delete button on the left hand side
 
-Current effects:
+----Current effects----
 
 Overdrive made with createWaveShaper() and makeDistortionCurve
 
@@ -44,9 +44,12 @@ GainBoost - made with a simple gain node
 
 Reverb - made with createConvolver()
 
-Deployed website: https://ampless.herokuapp.com/
 
-Planning:
+----Deployed website----
+
+https://ampless.herokuapp.com/
+
+----Planning----
 Trello Board: https://trello.com/invite/b/519s3oEn/01bdfcb014b5cb94c9f695e51c8a92a1/final-project-ampless
 
 Login/Signup WireFrame:   https://github.com/tnicho/Ampless/blob/main/WireFrames1.png
