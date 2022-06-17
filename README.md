@@ -14,7 +14,7 @@ Main Page:https://github.com/tnicho/Ampless/blob/main/Ampless%20Main%20Page.png
 
 ----Technologies Used----
 
-MongoDB, Express, React, Node, Material UI, Heroku, VSCode
+MongoDB, Express, React, Node, Web Audio API, Material UI, Heroku, VSCode
 
 ----Getting Started----
 
