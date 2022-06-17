@@ -79,7 +79,12 @@ export default class SetupPage extends Component {
       id: '',
       name: 'Insert Setup Name',
       overdrive: 0,
+      overdriveOn: false,
       delay: 0,
+      delayOn: false,
+      gainBoost: 0,
+      gainBoostOn: false,
+      reverbOn: false,
     })
   }
 

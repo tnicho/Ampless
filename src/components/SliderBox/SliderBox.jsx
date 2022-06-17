@@ -1,19 +1,19 @@
 import React from 'react'
-import {Box, Slider, Typography, Switch} from '@mui/material'
+import {Box, Slider, Typography, Switch, Card} from '@mui/material'
 import './SliderBox.css'
 
 
 export default function SliderBox(props) {
   return (
     <Box
-    sx={{borderColor: 'background.paper'}}
-    border= {2}
+    sx={{ m: 1, backgroundColor: 'grey.200', boxShadow: 6, borderColor: 'background.paper'}}
+    border= {5}
     display= 'flex'
     flexDirection= 'column'
     alignItems= 'center'
     justifyContent= 'center'
     >
-      <Typography variant='h4'>{props.title} : {props.setupNum}</Typography>
+      <Typography sx={{fontWeight: 550}}variant='h4'>{props.title} : {props.setupNum}</Typography>
         <Slider
           className = 'SetupSlider'
           sx={{
@@ -22,6 +22,7 @@ export default function SliderBox(props) {
             height: 20,
             '& .MuiSlider-thumb': {height: 40, width: 40}
           }}
+          disabled = {(props.audioOn && (!(props.switchChecked))) ? true : false}
           area-label={props.title}
           step={1}
           size= 'Large'
@@ -33,6 +34,7 @@ export default function SliderBox(props) {
           onChange={props.handleChange}
         />
         <Switch
+        disabled = {(props.audioOn && (!(props.switchChecked))) ? true : false}
         color='success'
         size= 'Large'
         name={props.switchName}

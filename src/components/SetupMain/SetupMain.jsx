@@ -59,6 +59,7 @@ export default function SetupMain(props) {
       />
       </Box>
       <SliderBox className = 'OverdriveSlider' 
+      audioOn = {props.audioOn}
       title = {'Overdrive'} 
       name= {'overdrive'}
       switchName={'overdriveOn'}
@@ -67,7 +68,8 @@ export default function SetupMain(props) {
       handleChange = {props.handleChange}
       handleSwitchChange = {props.handleSwitchChange}
       />
-      <SliderBox className = 'DelaySlider' 
+      <SliderBox className = 'DelaySlider'
+      audioOn = {props.audioOn} 
       title= {'Delay'} 
       name = {'delay'}
       switchName={'delayOn'}
@@ -77,15 +79,17 @@ export default function SetupMain(props) {
       handleSwitchChange = {props.handleSwitchChange}
       />
       <SliderBox className = 'Tremelo' title= {'Tremelo COMING SOON'} />
-      <SliderBox className = 'Reverb' 
-      title= {'Reverb'}
+      <SliderBox className = 'Reverb'
+      audioOn = {props.audioOn} 
+      title= {'Reverb (Work in Progress)'}
       name = "Reverb"
       switchName={'reverbOn'}
       switchChecked={props.reverbOn} 
       handleChange = {props.handleChange}
       handleSwitchChange = {props.handleSwitchChange}  />
       <SliderBox className = 'Chorus' title= {'Chorus COMING SOON'} />
-      <SliderBox className = 'Gain' 
+      <SliderBox className = 'Gain'
+      audioOn = {props.audioOn} 
       title = {'GainBoost'} 
       name= {'gainBoost'}
       switchName={'gainBoostOn'}
